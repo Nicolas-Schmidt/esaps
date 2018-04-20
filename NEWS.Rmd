@@ -1,0 +1,15 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+## esap_object
+* CORRECCUOIN DE UN WARNINGS convertir a as.data.frame la cargada de datos individual
+
+## evolat
+* 2 rownames(...) <- NULL
+
+## enp
+
+* 2 rownames(...) <- NULL

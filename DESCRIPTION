@@ -1,0 +1,20 @@
+Package: esaps
+Type: Package
+Title: Indicators of Electoral Systems and Party Systems
+Version: 0.1.0
+Author: Nicolas Schmidt [aut, cre]
+Maintainer: Nicolas Schmidt <nschmidt@cienciassociales.edu.uy>                
+Description: It allows to construct two types of indicators used in the study of
+    Electoral Systems and Party Systems starting from electoral results data.
+    The Effective Number of Parties (Laakso and Taagepera (1979) <doi:10.1177/001041407901200101>)
+    and Electoral Volatility in its three versions (Pedersen (1979) <doi:10.1111/j.1475-6765.1979.tb01267.x>,
+    Powell and Tucker (2014) <doi:10.1017/S0007123412000531> and Torcal and Lago (2015, ISBN:9788415260356)).
+License: GPL-2
+URL: https://github.com/Nicolas-Schmidt/esaps
+Encoding: UTF-8
+LazyData: true
+Imports:
+    plyr (>= 1.8.4),
+    readODS (>= 1.6.4),
+    readxl (>= 1.0.0)
+RoxygenNote: 6.0.1
