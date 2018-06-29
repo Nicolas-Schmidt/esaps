@@ -1,10 +1,10 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+esaps <img src="logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
+----------------------------------------------------------------------------------------------------
+
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/esaps)](https://cran.r-project.org/package=esaps)
-
-esaps <img src="logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
-----------------------------------------------------------------------------------------------------
 
 ### Description
 
