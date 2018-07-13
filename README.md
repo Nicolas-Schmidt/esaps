@@ -188,7 +188,7 @@ votes <- esaps_object(path = "...\data",
 ## 2
 votes <- esaps_object(path = "...\data",
                       extension = "xlsx",
-                      name.file = c("votes_ARG.xlsx","votes_URY.xlsx", "votes_BRA.xlsx")
+                      name.file = c("votes_ARG.xlsx","votes_URY.xlsx", "votes_BRA.xlsx"),
                       nCountry = 3, 
                       name.country = "country", 
                       name.year = "year")
