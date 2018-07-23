@@ -160,7 +160,7 @@ votes <- esaps_object(path = "...\data",
 
 ### Citation
 
-To cite esaps in publications, please use:
+To cite `esaps` in publications, please use:
 
 ```{r eval=FALSE}
 citation("esaps")

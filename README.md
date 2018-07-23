@@ -42,7 +42,6 @@ dimensions, the process becomes cumbersome.
 
 ``` r
 library(esaps)
-#> Warning: package 'esaps' was built under R version 3.5.1
 
 votes <- list(data.frame(country = rep("ARG", 3),
                           year = c(1995, 2000, 2005),
@@ -199,7 +198,7 @@ votes <- esaps_object(path = "...\data",
 
 ### Citation
 
-To cite esaps in publications, please use:
+To cite `esaps` in publications, please use:
 
 ``` r
 citation("esaps")
