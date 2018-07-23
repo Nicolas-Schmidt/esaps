@@ -6,7 +6,7 @@ The `esaps` package <img src="logo.png" style="margin-left:10px;margin-bottom:5p
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/esaps)](https://cran.r-project.org/package=esaps)
 [![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/esaps)](https://www.r-pkg.org/pkg/esaps)
+downloads](https://cranlogs.r-pkg.org/badges/esaps?color=brightgreen)](https://www.r-pkg.org/pkg/esaps)
 
 ### Description
 
