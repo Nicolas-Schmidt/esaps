@@ -1,10 +1,12 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-esaps <img src="logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
-----------------------------------------------------------------------------------------------------
+The `esaps` package <img src="logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
+------------------------------------------------------------------------------------------------------------------
 
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/esaps)](https://cran.r-project.org/package=esaps)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/esaps)](https://www.r-pkg.org/pkg/esaps)
 
 ### Description
 
@@ -40,6 +42,7 @@ dimensions, the process becomes cumbersome.
 
 ``` r
 library(esaps)
+#> Warning: package 'esaps' was built under R version 3.5.1
 
 votes <- list(data.frame(country = rep("ARG", 3),
                           year = c(1995, 2000, 2005),
