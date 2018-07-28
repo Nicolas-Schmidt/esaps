@@ -177,7 +177,7 @@ print(volatility)
 #> 3     URY     2000     2010        3    13.33      5.0
 ```
 
-other way of loading data:
+another way of loading data:
 
 ``` r
 ## 1

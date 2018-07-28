@@ -131,7 +131,7 @@ print(volatility)
 
 ```
 
-other way of loading data:
+another way of loading data:
 
 ```{r eval=FALSE}
 ## 1
