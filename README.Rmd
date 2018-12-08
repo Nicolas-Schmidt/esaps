@@ -23,17 +23,17 @@ knitr::opts_chunk$set(
 
 ### Description
 
-It allows to construct two types of indicators used in the study of Electoral Systems and Party Systems starting from electoral results data. The Effective Number of Parties (Laakso and Taagepera (1979)) and Electoral Volatility in its three versions (Pedersen (1979), Powell and Tucker (2014) and Torcal and Lago (2015)).
+It allows structuring electoral data of different size and structure to calculate various indicators frequently used in the studies of electoral systems and party systems. Indicators of electoral volatility, electoral disproportionality, party nationalization and the effective number of parties are included.
 
 ### Installation
 
-You can install the released version of esaps from [CRAN](https://cran.r-project.org/) with:
+You can install the released version (`0.1.0`) of esaps from [CRAN](https://cran.r-project.org/) with:
 
 ```{r eval=FALSE}
 install.packages("esaps")
 ```
 
-And the development version from [GitHub](https://cran.r-project.org/) with:
+And the development version (`0.2.0`) from [GitHub](https://cran.r-project.org/) with:
 
 ```{r eval=FALSE}
 if (!require("devtools")) install.packages("devtools")
@@ -41,119 +41,111 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 ```
 
 
-### Example
+### Functions
 
-This is a typical database with electoral results by countries. Between countries, the number of parties varies as well as the number of elections. When calculating indicators from databases of different dimensions, the process becomes cumbersome. 
 
-```{r example}
+| Indicator                     | Method                                        | Variables                                       | Function                  |
+| -----------------------------| ------------------------------                       | ---------------------------------------------   |-------------------------- |
+| Electoral Volatility          | [Pedersen (1979)](http://bit.ly/2p4cyZQ)             | `election` `unit` `party` `votes`               | `evolat(..., method = 1)` |
+|                               | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)    | `election` `unit` `party` `votes`               | `evolat(..., method = 2)` |
+|                               | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)      | `election` `unit` `party` `votes` `M`           | `evolat(..., method = 3)` |
+| Effective Number of Parties   | [Laakso and Taagepera (1979)](http://bit.ly/2oYU4dV) | `election` `unit` `party` `votes` or `seats`    | `enp()`                   |
+| Party System Nationalization  | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method = 1)`    |
+|                               | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method = 2)`    |
+| Party Nationalization         | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO)| `election` `unit` `party` `votes`               | `psn(..., method=1, pn=TRUE)`|
+| Electoral Disproportionality  | Rae (1971)                                           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 1)` |
+|                               | [Loosemore and Hanby (1971)](https://bit.ly/2B1mIDH) | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 2)` |
+|                               | Lijphart_1 (1986)                                    | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 3)` |
+|                               | [Lijphart_2 (1994)](https://bit.ly/2McLshB)          | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 4)` |
+|                               | [Gallagher (1991)](https://bit.ly/2M6CPoy)           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 5)` |
+|                               | [Cox and Shugart (1991)](https://bit.ly/2M9Bttr)     | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 6)` |
+
+
+
+### Indicators and Variables
+
+<img src="net.png" style="margin-center:30px;margin-bottom:5px;" width="860" align="center"></a>
+
+
+
+### Examples
+
+#### Load data
+```{r}
 library(esaps)
 
 votes <- list(data.frame(country = rep("ARG", 3),
-                          year = c(1995, 2000, 2005),
-                          party_A = c(40,10,20),
-                          party_B = c(35,20,40),
-                          party_C = c(25,70,40)),
-               data.frame(country = rep("URY", 4),
-                          year = c(1995, 2000, 2005, 2010),
-                          party_A = c(30,30,20,20),
-                          party_B = c(30,50,40, 30),
-                          party_C = c(30,10,30, 25),
-                          party_D = c(10,10,10,25)),
-               data.frame(country = rep("BRA", 2),
-                          year = c(1993, 1998),
-                          party_A = c(30, 55),
-                          party_B = c(70, 45)))
+                         year = c(1995, 2000, 2005),
+                         party_A = c(40,10,20),
+                         party_B = c(35,20,40),
+                         party_C = c(25,70,40)),
+              data.frame(country = rep("URY", 4),
+                         year = c(1995, 2000, 2005, 2010),
+                         party_A = c(30,30,20,20),
+                         party_B = c(30,50,40, 30),
+                         party_C = c(30,10,30, 25),
+                         party_D = c(10,10,10,25)),
+              data.frame(country = rep("BRA", 2),
+                         year = c(1993, 1998),
+                         party_A = c(30, 55),
+                         party_B = c(70, 45)))
 
-print(votes)
+votes
+
+votes <- convert_esaps(dataset = votes, unit.name = "country", election.name = "year")
+
+votes
 
 ```
 
-
-Once you have the data loaded in one or several electronic spreadsheets, the process of loading, assembly and conversion of the database to start calculating indicators is done with:
-
+#### Functions
+Electoral volatility 
 ```{r}
-votes <- esaps_object(dataset = votes, name.country = "country", name.year = "year")
+evolat(votes, 1)
+
+evolat(tidy_data = votes, method = 1, summary = TRUE)
 ```
 
-Then you can use any of the indicators:
-
+Effective Number of Parties
 ```{r}
-volatility <- evolat(esapsObject = votes, method = "Pedersen", summary = FALSE)
-print(volatility)
+enp(votes)
+
 ```
 
-You can also get a summary of the data by country:
-
+Electoral Disproportionality
 ```{r}
-votes <- list(data.frame(country = rep("ARG", 3),
-                          year = c(1995, 2000, 2005),
-                          party_A = c(40,10,20),
-                          party_B = c(35,20,40),
-                          party_C = c(25,70,30),
-                          party_D = c(NA, NA, 10)),        
-               data.frame(country = rep("URY", 4),
-                          year = c(1995, 2000, 2005, 2010),
-                          party_A = c(30,30,20,20),
-                          party_B = c(30,50,40, 30),
-                          party_C = c(30,10,30, 25),
-                          party_D = c(10,10,10,25)),
-               data.frame(country = rep("BRA", 2),
-                          year = c(1993, 1998),
-                          party_A = c(30, 55),
-                          party_B = c(70, 45)))
-votes <- esaps_object(dataset = votes, name.country = "country", name.year = "year")
-volatility <- evolat(esapsObject = votes, method = "Powell and Tucker", summary = TRUE)
-print(volatility)
+votes <- data.frame(election = rep(c(2000, 2005), each = 4),
+                   unit  = rep(c("ARG", "URY"), each = 4),
+                   party = c("party_A", "party_B","party_C","party_D"),
+                   votes = c(20, 30, 40, 10, 30, 35, 25, 10),
+                   seats = c(25, 20, 40, 15, 35, 30, 30, 5)
+                   )
 
-votes <- list(data.frame(country = rep("ARG", 3),
-                          year = c(1995, 2000, 2005),
-                          party_A = c(40,10,20),
-                          party_B = c(35,20,40),
-                          party_C = c(25,70,30),
-                          party_D = c(NA, NA, 10),
-                          magnitude = c(2,2,2)),        
-               data.frame(country = rep("URY", 4),
-                          year = c(1995, 2000, 2005, 2010),
-                          party_A = c(30,30,20,20),
-                          party_B = c(30,50,40, 30),
-                          party_C = c(30,10,30, 25),
-                          party_D = c(10,10,10,25),
-                          magnitude = c(2,2,2,3)),
-               data.frame(country = rep("BRA", 2),
-                          year = c(1993, 1998),
-                          party_A = c(30, 55),
-                          party_B = c(70, 45),
-                          magnitude = c(2,2)))
+votes
 
-votes <- esaps_object(dataset = votes, name.country = "country", name.year = "year", name.M = "magnitude")
-volatility <- evolat(esapsObject = votes, method = "Torcal and Lago", summary = TRUE)
-print(volatility)
+dispro(votes, 1:6, 1)
+
+dispro(tidy_data = votes, method = c("Rae", "Gallagher"))
 
 ```
 
-another way of loading data:
+Party System Nationalization Score and Party Nationalization Score
+```{r}
+votes <- data.frame(election = rep(2000,4),
+                    unit  = c("District_1", "District_2","District_1","District_2"),
+                    party = c("party_A", "party_A","party_B","party_B"),
+                    votes = c(0.60,0.40, 0.30, 0.70),
+                    votes_nac = rep(c(0.55,0.45),2)
+                    )
 
-```{r eval=FALSE}
-## 1
-votes <- esaps_object(path = "...\data",
-                      extension = "xlsx",
-                      name.file = "votes.xlsx",
-                      nCountry = 3, 
-                      name.country = "country", 
-                      name.year = "year")
-## 2
-votes <- esaps_object(path = "...\data",
-                      extension = "xlsx",
-                      name.file = c("votes_ARG.xlsx","votes_URY.xlsx", "votes_BRA.xlsx"),
-                      nCountry = 3, 
-                      name.country = "country", 
-                      name.year = "year")
+votes
+
+psns(tidy_data = votes, method = 1)
+
+psns(tidy_data = votes, method = 1, pns = TRUE)
+
 
 ```
-
-
-
-
 
 
 

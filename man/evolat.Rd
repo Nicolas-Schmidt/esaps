@@ -4,20 +4,52 @@
 \alias{evolat}
 \title{Electoral volatility calculation}
 \usage{
-evolat(esapsObject, method, threshold = 2, summary = FALSE, digits = 2)
+evolat(tidy_data, method, threshold = 2, summary = FALSE, digits = 2,
+  scale = 100)
 }
 \arguments{
-\item{esapsObject}{An \code{esaps} class object. Function: \code{\link{esaps_object}}.}
+\item{tidy_data}{data.frame that contains the following variables with these names:
+\itemize{
+         \item{\code{election}: year of election.}
+         \item{\code{unit}: the unit of analysis (province, department ...)}
+         \item{\code{party}: name of the political parties that obtain votes.}
+         \item{\code{votes}: votes obtained by each party.}
+         \item{\code{M}: magnitude of the district. Only if the \code{method = 3}. It refers to the M + 1 rule (only 'M' must be loaded).}
+        }
+If the data is not structured in this way you can order it with: \code{\link{convert_esaps}}.}
 
-\item{method}{Method to calculate electoral volatility: \code{"Pedersen"},
-\code{"Powell and Tucker"} or \code{"Torcal and Lago"}.}
+\item{method}{Method to calculate electoral volatility:
+\itemize{
+        \item{\code{method = "Pedersen"} or \code{method = 1}.}
+        \item{\code{method = "Powell and Tucker"} or \code{method = 2}.}
+        \item{\code{method = "Torcal and Lago"} or \code{method = 3}.}
+        }}
 
 \item{threshold}{Minimum threshold for 'Type A' electoral volatility calculation
 (Powell and Tucker, 2014). By default is 2\%.}
 
-\item{summary}{Summary of data by country, by default it is \code{FALSE}.}
+\item{summary}{Summary of data by unit, by default it is \code{FALSE}.}
 
 \item{digits}{integer indicating the number of decimal places to be used.}
+
+\item{scale}{By default it is \code{100}, the indices will vary between 0 and 100.
+If \code{scale = 1} the variation will be between 0 and 1.}
+}
+\value{
+if \code{summary = FALSE,} return data.frame.
+
+    if \code{summary = TRUE}, return a list with two data.frame.
+    \itemize{
+            \item{\code{list[[1]]}} {Indicator}
+            \item{\code{list[[2]]}} {Summary by 'unit'}
+                  \itemize{
+                      \item{\code{min} variable 'election'}
+                      \item{\code{max} variable 'election'}
+                      \item{number of elections}
+                      \item{\code{mean} indicator}
+                      \item{\code{standard deviation} indicator}
+                      }
+     }
 }
 \description{
 Electoral volatility calculation:
@@ -26,22 +58,15 @@ Electoral volatility calculation:
     \href{http://bit.ly/2FD83zE}{Torcal and Lago (2015)}.
 }
 \examples{
-votes <- list(data.frame(country = rep("ARG", 3),
-                         year = c(1995, 2000, 2005),
-                         party_A = c(40,10,20),
-                         party_B = c(35,20,40),
-                         party_C = c(25,70,40)),
-              data.frame(country = rep("URY", 4),
-                         year = c(1995, 2000, 2005, 2010),
-                         party_A = c(30,30,20,20),
-                         party_B = c(30,50,40, 30),
-                         party_C = c(30,10,30, 25),
-                         party_D = c(10,10,10,25)),
-              data.frame(country = rep("BRA", 2),
-                         year = c(1993, 1998),
-                         party_A = c(30, 55),
-                         party_B = c(70, 45)))
 
-votes <- esaps_object(dataset = votes, name.country = "country", name.year = "year")
-volatility <- evolat(esapsObject = votes, method = "Pedersen", summary = TRUE)
+votes <- data.frame(election = rep(c(1995, 2000, 2005, 2010),4),
+                    unit = "ARG",
+                    party = rep(c("party_A","party_B","party_C","party_D"), each = 4),
+                    votes = c(30,30,20,20,30,50,40,30,30,10,30,25,10,10,10,25))
+evolat(votes, 1)
+evolat(tidy_data = votes, method = 1, summary = TRUE)
+
+}
+\author{
+Nicolas Schmidt \email{nschmidt@cienciassociales.edu.uy}
 }

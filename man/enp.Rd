@@ -4,12 +4,38 @@
 \alias{enp}
 \title{Effective Number of Parties}
 \usage{
-enp(esapsObject, summary = FALSE)
+enp(tidy_data, enp_seats = FALSE, summary = FALSE)
 }
 \arguments{
-\item{esapsObject}{An \code{esaps} class object. Function: \code{\link{esaps_object}}.}
+\item{tidy_data}{data.frame that contains the following variables with these names:
+\itemize{
+         \item{\code{election}: year of election.}
+         \item{\code{unit}: the unit of analysis (province, department ...)}
+         \item{\code{party}: name of the political parties that obtain votes.}
+         \item{\code{votes}: votes obtained by each party.}
+         \item{\code{seats}: .}
+        }
+If the data is not structured in this way you can order it with: \code{\link{convert_esaps}}.}
 
-\item{summary}{Summary of the data by country, by default it is \code{FALSE}.}
+\item{enp_seats}{enp_seats = TRUE allows us to calculate jointly the effective
+number of electoral parties and in the congress.}
+
+\item{summary}{Summary of the data by unit, by default it is \code{FALSE}.}
+}
+\value{
+if \code{summary = FALSE,} return data.frame.
+
+    if \code{summary = TRUE}, return a list with two data.frame.
+    \itemize{
+            \item{\code{list[[1]]}} {Indicator}
+            \item{\code{list[[2]]}} {Summary}
+                  \itemize{
+                      \item{\code{min} variable 'election'}
+                      \item{\code{max} variable 'election'}
+                      \item{number of elections}
+                      \item{\code{mean} indicator}
+                      }
+     }
 }
 \description{
 The Effective Number of Parties (ENP) is an index developed by
@@ -19,22 +45,18 @@ The Effective Number of Parties (ENP) is an index developed by
     that the parties obtain in an electoral instance.
 }
 \examples{
-votes <- list(data.frame(country = rep("ARG", 3),
-                         year = c(1995, 2000, 2005),
-                         party_A = c(40,10,20),
-                         party_B = c(35,20,40),
-                         party_C = c(25,70,40)),
-              data.frame(country = rep("URY", 4),
-                         year = c(1995, 2000, 2005, 2010),
-                         party_A = c(30,30,20,20),
-                         party_B = c(30,50,40, 30),
-                         party_C = c(30,10,30, 25),
-                         party_D = c(10,10,10,25)),
-              data.frame(country = rep("BRA", 2),
-                         year = c(1993, 1998),
-                         party_A = c(30, 55),
-                         party_B = c(70, 45)))
+votes <- data.frame(election = rep(c(2000, 2005), each = 4),
+                   unit  = rep(c("ARG", "URY"), each = 4),
+                   party = c("party_A", "party_B","party_C","party_D"),
+                   votes = c(20, 20, 50, 10, 30, 35, 25, 10),
+                   seats = c(25, 25, 40, 10, 30, 30, 30, 10)
+                   )
 
-votes <- esaps_object(dataset = votes, name.country = "country", name.year = "year")
-en_party <- enp(votes, summary = TRUE)
+enp(votes)
+enp(votes, enp_seats = TRUE)
+enp(votes, summary = TRUE)
+
+}
+\author{
+Nicolas Schmidt \email{nschmidt@cienciassociales.edu.uy}
 }
