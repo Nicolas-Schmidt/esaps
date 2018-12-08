@@ -134,7 +134,7 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 
 ### Indicators and Variables
 
-<img src="net.png" style="margin-center:30px;margin-bottom:5px;" width="860" align="center"></a>
+<img src="net.png" style="margin-center:30px;margin-bottom:5px;" width="1160" align="center"></a>
 
 ### Examples
 
