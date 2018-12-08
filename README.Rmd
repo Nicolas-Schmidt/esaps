@@ -45,20 +45,20 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 
 
 | Indicator                     | Method                                        | Variables                                       | Function                  |
-| -----------------------------| ------------------------------                       | ---------------   |-------------------------- |
-| Electoral Volatility          | [Pedersen (1979)](http://bit.ly/2p4cyZQ)             | `election` `unit` `party` `votes`               | `evolat(..., method = 1)` |
-|                               | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)    | `election` `unit` `party` `votes`               | `evolat(..., method = 2)` |
-|                               | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)      | `election` `unit` `party` `votes` `M`           | `evolat(..., method = 3)` |
+| -----------------------------| ------------------------------                        | ---------------   |-------------------------- |
+| Electoral Volatility          | [Pedersen (1979)](http://bit.ly/2p4cyZQ)             | `election` `unit` `party` `votes`               | `evolat(..., method=1)` |
+|                               | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)    | `election` `unit` `party` `votes`               | `evolat(..., method=2)` |
+|                               | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)      | `election` `unit` `party` `votes` `M`           | `evolat(..., method=3)` |
 | Effective Number of Parties   | [Laakso and Taagepera (1979)](http://bit.ly/2oYU4dV) | `election` `unit` `party` `votes` or `seats`    | `enp()`                   |
-| Party System Nationalization  | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method = 1)`    |
-|                               | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method = 2)`    |
+| Party System Nationalization  | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method=1)`    |
+|                               | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY)| `election` `unit` `party` `votes` `votes_nac`   | `psn(..., method=2)`    |
 | Party Nationalization         | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO)| `election` `unit` `party` `votes`               | `psn(..., method=1, pn=TRUE)`|
-| Electoral Disproportionality  | Rae (1971)                                           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 1)` |
-|                               | [Loosemore and Hanby (1971)](https://bit.ly/2B1mIDH) | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 2)` |
-|                               | Lijphart_1 (1986)                                    | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 3)` |
-|                               | [Lijphart_2 (1994)](https://bit.ly/2McLshB)          | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 4)` |
-|                               | [Gallagher (1991)](https://bit.ly/2M6CPoy)           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 5)` |
-|                               | [Cox and Shugart (1991)](https://bit.ly/2M9Bttr)     | `election` `unit` `party` `votes` `seats`       | `dispro(..., method = 6)` |
+| Electoral Disproportionality  | Rae (1971)                                           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=1)` |
+|                               | [Loosemore and Hanby (1971)](https://bit.ly/2B1mIDH) | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=2)` |
+|                               | Lijphart_1 (1986)                                    | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=3)` |
+|                               | [Lijphart_2 (1994)](https://bit.ly/2McLshB)          | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=4)` |
+|                               | [Gallagher (1991)](https://bit.ly/2M6CPoy)           | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=5)` |
+|                               | [Cox and Shugart (1991)](https://bit.ly/2M9Bttr)     | `election` `unit` `party` `votes` `seats`       | `dispro(..., method=6)` |
 
 
 
