@@ -45,7 +45,7 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 
 
 | Indicator                     | Method                                        | Variables                                       | Function                  |
-| -----------------------------| ------------------------------                       | ---------------------------------------------   |-------------------------- |
+| -----------------------------| ------------------------------                       | ---------------   |-------------------------- |
 | Electoral Volatility          | [Pedersen (1979)](http://bit.ly/2p4cyZQ)             | `election` `unit` `party` `votes`               | `evolat(..., method = 1)` |
 |                               | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)    | `election` `unit` `party` `votes`               | `evolat(..., method = 2)` |
 |                               | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)      | `election` `unit` `party` `votes` `M`           | `evolat(..., method = 3)` |

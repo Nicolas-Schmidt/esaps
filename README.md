@@ -37,10 +37,10 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 
 <table>
 <colgroup>
-<col style="width: 22%" />
-<col style="width: 23%" />
-<col style="width: 34%" />
-<col style="width: 20%" />
+<col style="width: 28%" />
+<col style="width: 30%" />
+<col style="width: 15%" />
+<col style="width: 26%" />
 </colgroup>
 <thead>
 <tr class="header">
