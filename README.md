@@ -263,14 +263,14 @@ enp(votes)
 Electoral Disproportionality
 
 ``` r
-votes <- data.frame(election = rep(c(2000, 2005), each = 4),
+votes2 <- data.frame(election = rep(c(2000, 2005), each = 4),
                    unit  = rep(c("ARG", "URY"), each = 4),
                    party = c("party_A", "party_B","party_C","party_D"),
                    votes = c(20, 30, 40, 10, 30, 35, 25, 10),
                    seats = c(25, 20, 40, 15, 35, 30, 30, 5)
                    )
 
-votes
+votes2
 #>   election unit   party votes seats
 #> 1     2000  ARG party_A    20    25
 #> 2     2000  ARG party_B    30    20
@@ -281,12 +281,12 @@ votes
 #> 7     2005  URY party_C    25    30
 #> 8     2005  URY party_D    10     5
 
-dispro(votes, 1:6, 1)
+dispro(votes2, 1:6, 1)
 #>   election unit  Rae  LH Lijphart_1 Lijphart_2 Gallagher Cox_Shugart
 #> 1     2000  ARG 0.05 0.1       0.10       0.06      0.32        1.00
 #> 2     2005  URY 0.05 0.1       0.05       0.06      0.32        0.73
 
-dispro(tidy_data = votes, method = c("Rae", "Gallagher"))
+dispro(tidy_data = votes2, method = c("Rae", "Gallagher"))
 #>   election unit  Rae Gallagher
 #> 1     2000  ARG 0.05      0.32
 #> 2     2005  URY 0.05      0.32
@@ -295,25 +295,25 @@ dispro(tidy_data = votes, method = c("Rae", "Gallagher"))
 Party System Nationalization Score and Party Nationalization Score
 
 ``` r
-votes <- data.frame(election = rep(2000,4),
+votes3 <- data.frame(election = rep(2000,4),
                     unit  = c("District_1", "District_2","District_1","District_2"),
                     party = c("party_A", "party_A","party_B","party_B"),
                     votes = c(0.60,0.40, 0.30, 0.70),
                     votes_nac = rep(c(0.55,0.45),2)
                     )
 
-votes
+votes3
 #>   election       unit   party votes votes_nac
 #> 1     2000 District_1 party_A   0.6      0.55
 #> 2     2000 District_2 party_A   0.4      0.45
 #> 3     2000 District_1 party_B   0.3      0.55
 #> 4     2000 District_2 party_B   0.7      0.45
 
-psns(tidy_data = votes, method = 1)
+psns(tidy_data = votes3, method = 1)
 #>   election  psns
 #> 1     2000 84.85
 
-psns(tidy_data = votes, method = 1, pns = TRUE)
+psns(tidy_data = votes3, method = 1, pns = TRUE)
 #> $PSNS
 #>   election  psns
 #> 1     2000 84.85
@@ -323,6 +323,38 @@ psns(tidy_data = votes, method = 1, pns = TRUE)
 #> 1 party_A     2000 0.853
 #> 2 party_B     2000 0.844
 ```
+
+Linear Model
+
+``` r
+library(tidyverse)
+
+dat <- inner_join(evolat(votes, 1), enp(votes))
+
+dat
+#>   election unit eVolat  enp
+#> 1     2000  ARG     45 1.85
+#> 2     2005  ARG     30 2.78
+#> 3     1998  BRA     25 1.98
+#> 4     2000  URY     20 2.78
+#> 5     2005  URY     20 3.33
+#> 6     2010  URY     15 3.92
+
+lm(formula(dat[,4:3]), data = dat)
+#> 
+#> Call:
+#> lm(formula = formula(dat[, 4:3]), data = dat)
+#> 
+#> Coefficients:
+#> (Intercept)       eVolat  
+#>     4.25394     -0.05731
+
+ggplot(dat, aes(x = enp, y = eVolat ))+
+        geom_point() + 
+        geom_smooth(method = lm, se = TRUE)
+```
+
+![](README-unnamed-chunk-9-1.png)
 
 ### Citation
 
