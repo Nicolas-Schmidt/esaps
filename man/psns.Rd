@@ -45,8 +45,8 @@ Party System Nationalization Score
 }
 \examples{
 votes <- data.frame(election = rep(2000,4),
-                    unit  = c("District_1", "District_2","District_1","District_2"),
-                    party = c("party_A", "party_A","party_B","party_B"),
+                    unit  = rep(c("District_1", "District_2"), each = 2),
+                    party = rep(c("party_A", "party_B"), 2),
                     votes = c(0.60,0.40, 0.30, 0.70),
                     votes_nac = rep(c(0.55,0.45),2)
                    )

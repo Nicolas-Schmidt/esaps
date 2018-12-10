@@ -58,7 +58,8 @@
 #'                      seats_party3 = c(40, 30),
 #'                      seats_party4 = c(15, 5))
 #'
-#' votes <- convert_esaps(dataset = votes2, unit.name = "country", election.name = "year", seats = TRUE)
+#' votes <- convert_esaps(dataset = votes2, unit.name = "country", election.name = "year",
+#'                        seats = TRUE)
 #'
 #'
 #' \dontrun{
@@ -207,7 +208,7 @@ convert_esaps<-function(path = NULL,
                 output <- list()
                 for(i in 1:length(out)){output[[i]] <- dplyr::inner_join(out[[i]],out0[[i]] , by=c("election", "party"))}
                 pull <- do.call(rbind, output)
-                rownames(pull)<-NULL
+                rownames(pull) <- NULL
                 return(pull)
         }
         variables <- c(election.name, unit.name, M.name) ## acá no va votes_nac_name???
@@ -241,13 +242,11 @@ convert_esaps<-function(path = NULL,
                 out4 <- lapply(out, function(x){tidyr::gather(x, "party", "votes", -variables)})
                 pull <- do.call(rbind.data.frame, out4)
         }
-
         if(length(unique(as.character(pull$unit)))>1){
                 pull <- pull[order(pull$unit), ]
         }else{
                 pull <- pull[order(pull$election), ]
         }
-
         rownames(pull) <- NULL
         return(pull)
 }

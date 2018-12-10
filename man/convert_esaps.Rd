@@ -64,6 +64,22 @@ votes <- list(data.frame(country = rep("ARG", 3),
 
 votes <- convert_esaps(dataset = votes, unit.name = "country", election.name = "year")
 
+
+votes2 <- data.frame(year = c(2000, 2005),
+                     country = "URY",
+                     votes_party1 = c(20, 30),
+                     votes_party2 = c(30, 35),
+                     votes_party3 = c(40, 25),
+                     votes_party4 = c(10, 10),
+                     seats_party1 = c(25, 35),
+                     seats_party2 = c(20, 30),
+                     seats_party3 = c(40, 30),
+                     seats_party4 = c(15, 5))
+
+votes <- convert_esaps(dataset = votes2, unit.name = "country", election.name = "year",
+                       seats = TRUE)
+
+
 \dontrun{
 v1 <- convert_esaps(path = getwd(),
                    file.name = c("electionBRA.xlsx", "electionARG.xlsx"),
