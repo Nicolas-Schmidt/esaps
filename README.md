@@ -386,7 +386,7 @@ lm(formula(dat[,4:3]), data = dat)
 #> (Intercept)       eVolat  
 #>     4.25394     -0.05731
 
-ggplot(dat, aes(x = enp, y = eVolat ))+
+ggplot(dat, aes(x = enp, y = eVolat )) +
         geom_point() + 
         geom_smooth(method = lm, se = TRUE)
 ```

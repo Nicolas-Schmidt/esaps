@@ -182,7 +182,7 @@ dat
 
 lm(formula(dat[,4:3]), data = dat)
 
-ggplot(dat, aes(x = enp, y = eVolat ))+
+ggplot(dat, aes(x = enp, y = eVolat )) +
         geom_point() + 
         geom_smooth(method = lm, se = TRUE)
 
