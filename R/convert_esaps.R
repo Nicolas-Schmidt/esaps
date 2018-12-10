@@ -242,12 +242,15 @@ convert_esaps<-function(path = NULL,
                 pull <- do.call(rbind.data.frame, out4)
         }
 
+        if(length(unique(as.character(pull$unit)))>1){
+                pull <- pull[order(pull$unit), ]
+        }else{
+                pull <- pull[order(pull$election), ]
+        }
+
         rownames(pull) <- NULL
         return(pull)
 }
-
-
-
 
 
 
