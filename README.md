@@ -191,32 +191,32 @@ votes
 #> 7      1995  ARG party_C    25
 #> 8      2000  ARG party_C    70
 #> 9      2005  ARG party_C    40
-#> 10     1995  URY party_A    30
-#> 11     2000  URY party_A    30
-#> 12     2005  URY party_A    20
-#> 13     2010  URY party_A    20
-#> 14     1995  URY party_B    30
-#> 15     2000  URY party_B    50
-#> 16     2005  URY party_B    40
-#> 17     2010  URY party_B    30
-#> 18     1995  URY party_C    30
-#> 19     2000  URY party_C    10
-#> 20     2005  URY party_C    30
-#> 21     2010  URY party_C    25
-#> 22     1995  URY party_D    10
-#> 23     2000  URY party_D    10
-#> 24     2005  URY party_D    10
-#> 25     2010  URY party_D    25
-#> 26     1993  BRA party_A    30
-#> 27     1998  BRA party_A    55
-#> 28     1993  BRA party_B    70
-#> 29     1998  BRA party_B    45
+#> 10     1993  BRA party_A    30
+#> 11     1998  BRA party_A    55
+#> 12     1993  BRA party_B    70
+#> 13     1998  BRA party_B    45
+#> 14     1995  URY party_A    30
+#> 15     2000  URY party_A    30
+#> 16     2005  URY party_A    20
+#> 17     2010  URY party_A    20
+#> 18     1995  URY party_B    30
+#> 19     2000  URY party_B    50
+#> 20     2005  URY party_B    40
+#> 21     2010  URY party_B    30
+#> 22     1995  URY party_C    30
+#> 23     2000  URY party_C    10
+#> 24     2005  URY party_C    30
+#> 25     2010  URY party_C    25
+#> 26     1995  URY party_D    10
+#> 27     2000  URY party_D    10
+#> 28     2005  URY party_D    10
+#> 29     2010  URY party_D    25
 
 ## VOTES AND SEATS
 
 votes_2 <- data.frame(
         year = c(2000, 2005), 
-        country = c("ARG", "URY"), 
+        country = "URY", 
         votes_party1 = c(20, 30), 
         votes_party2 = c(30, 35),
         votes_party3 = c(40, 25),
@@ -229,7 +229,7 @@ votes_2 <- data.frame(
 
 votes_2
 #>   year country votes_party1 votes_party2 votes_party3 votes_party4
-#> 1 2000     ARG           20           30           40           10
+#> 1 2000     URY           20           30           40           10
 #> 2 2005     URY           30           35           25           10
 #>   seats_party1 seats_party2 seats_party3 seats_party4
 #> 1           25           20           40           15
@@ -239,13 +239,13 @@ votes_2c <- convert_esaps(dataset = votes_2, unit.name = "country", election.nam
 
 votes_2c
 #>   election unit        party votes seats
-#> 1     2000  ARG votes_party1    20    25
-#> 2     2005  URY votes_party1    30    35
-#> 3     2000  ARG votes_party2    30    20
-#> 4     2005  URY votes_party2    35    30
-#> 5     2000  ARG votes_party3    40    40
-#> 6     2005  URY votes_party3    25    30
-#> 7     2000  ARG votes_party4    10    15
+#> 1     2000  URY votes_party1    20    25
+#> 2     2000  URY votes_party2    30    20
+#> 3     2000  URY votes_party3    40    40
+#> 4     2000  URY votes_party4    10    15
+#> 5     2005  URY votes_party1    30    35
+#> 6     2005  URY votes_party2    35    30
+#> 7     2005  URY votes_party3    25    30
 #> 8     2005  URY votes_party4    10     5
 ```
 
@@ -302,7 +302,7 @@ Electoral Disproportionality
 
 votes_2
 #>   year country votes_party1 votes_party2 votes_party3 votes_party4
-#> 1 2000     ARG           20           30           40           10
+#> 1 2000     URY           20           30           40           10
 #> 2 2005     URY           30           35           25           10
 #>   seats_party1 seats_party2 seats_party3 seats_party4
 #> 1           25           20           40           15
@@ -311,7 +311,7 @@ votes_2
 v2 <- convert_esaps(dataset = votes_2, unit.name = "country", election.name = "year", seats = TRUE)
 dispro(v2, 1:6, 1)
 #>   election unit  Rae  LH Lijphart_1 Lijphart_2 Gallagher Cox_Shugart
-#> 1     2000  ARG 0.05 0.1       0.10       0.06      0.32        1.00
+#> 1     2000  URY 0.05 0.1       0.10       0.06      0.32        1.00
 #> 2     2005  URY 0.05 0.1       0.05       0.06      0.32        0.73
 
 library(magrittr)
@@ -319,13 +319,13 @@ library(magrittr)
 convert_esaps(dataset = votes_2, unit.name = "country", election.name = "year", seats = TRUE) %>%
         dispro(1:3)
 #>   election unit  Rae  LH Lijphart_1
-#> 1     2000  ARG 0.05 0.1       0.10
+#> 1     2000  URY 0.05 0.1       0.10
 #> 2     2005  URY 0.05 0.1       0.05
 
 
 dispro(tidy_data = v2, method = c("Rae", "Gallagher"))
 #>   election unit  Rae Gallagher
-#> 1     2000  ARG 0.05      0.32
+#> 1     2000  URY 0.05      0.32
 #> 2     2005  URY 0.05      0.32
 ```
 

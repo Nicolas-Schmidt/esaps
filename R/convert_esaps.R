@@ -48,7 +48,7 @@
 #'
 #'
 #' votes2 <- data.frame(year = c(2000, 2005),
-#'                      country = c("ARG", "URY"),
+#'                      country = "URY",
 #'                      votes_party1 = c(20, 30),
 #'                      votes_party2 = c(30, 35),
 #'                      votes_party3 = c(40, 25),
