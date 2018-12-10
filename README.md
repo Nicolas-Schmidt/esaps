@@ -1,6 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-The `esaps` package <img src="logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
-------------------------------------------------------------------------------------------------------------------
+The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
+------------------------------------------------------------------------------------------------------------------------------
 
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
@@ -134,7 +134,7 @@ devtools::install_github("Nicolas-Schmidt/esaps")
 
 ### Indicators and Variables
 
-<img src="net.png" style="margin-center:30px;margin-bottom:5px;" width="1160" align="center"></a>
+<img src="man/figures/net.png" style="margin-center:30px;margin-bottom:5px;" width="1160" align="center"></a>
 
 ### Examples
 
@@ -391,7 +391,7 @@ ggplot(dat, aes(x = enp, y = eVolat ))+
         geom_smooth(method = lm, se = TRUE)
 ```
 
-![](README-unnamed-chunk-9-1.png)
+![](man/figures/f1-1.png)
 
 ### Citation
 
