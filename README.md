@@ -296,8 +296,8 @@ Party System Nationalization Score and Party Nationalization Score
 
 ``` r
 votes3 <- data.frame(election = rep(2000,4),
-                    unit  = c("District_1", "District_2","District_1","District_2"),
-                    party = c("party_A", "party_A","party_B","party_B"),
+                    unit  = rep(c("District_1", "District_2"), each = 2),
+                    party = rep(c("party_A", "party_B"), 2),
                     votes = c(0.60,0.40, 0.30, 0.70),
                     votes_nac = rep(c(0.55,0.45),2)
                     )
@@ -305,23 +305,23 @@ votes3 <- data.frame(election = rep(2000,4),
 votes3
 #>   election       unit   party votes votes_nac
 #> 1     2000 District_1 party_A   0.6      0.55
-#> 2     2000 District_2 party_A   0.4      0.45
-#> 3     2000 District_1 party_B   0.3      0.55
+#> 2     2000 District_1 party_B   0.4      0.45
+#> 3     2000 District_2 party_A   0.3      0.55
 #> 4     2000 District_2 party_B   0.7      0.45
 
 psns(tidy_data = votes3, method = 1)
-#>   election  psns
-#> 1     2000 84.85
+#>   election   psns
+#> 1     2000 84.695
 
 psns(tidy_data = votes3, method = 1, pns = TRUE)
 #> $PSNS
-#>   election  psns
-#> 1     2000 84.85
+#>   election   psns
+#> 1     2000 84.695
 #> 
 #> $PNS
 #>     party election   pns
-#> 1 party_A     2000 0.853
-#> 2 party_B     2000 0.844
+#> 1 party_A     2000 0.833
+#> 2 party_B     2000 0.864
 ```
 
 Linear Model
