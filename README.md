@@ -25,8 +25,7 @@ You can install the released version (`0.1.0`) of esaps from
 install.packages("esaps")
 ```
 
-And the development version (`0.2.0`) from
-[GitHub](https://cran.r-project.org/) with:
+And the development version (`0.2.0`) from GitHub with:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
@@ -365,6 +364,7 @@ Linear Model
 
 ``` r
 library(tidyverse)
+#> Warning: package 'ggplot2' was built under R version 3.5.3
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
 

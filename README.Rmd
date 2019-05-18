@@ -33,7 +33,7 @@ You can install the released version (`0.1.0`) of esaps from [CRAN](https://cran
 install.packages("esaps")
 ```
 
-And the development version (`0.2.0`) from [GitHub](https://cran.r-project.org/) with:
+And the development version (`0.2.0`) from GitHub with:
 
 ```{r eval=FALSE}
 if (!require("devtools")) install.packages("devtools")
