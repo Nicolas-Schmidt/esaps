@@ -28,8 +28,8 @@ install.packages("esaps")
 And the development version (`0.2.0`) from GitHub with:
 
 ``` r
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("Nicolas-Schmidt/esaps")
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github("Nicolas-Schmidt/esaps")
 ```
 
 ### Functions
