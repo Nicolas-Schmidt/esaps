@@ -61,13 +61,13 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 <td></td>
 <td><a href="http://bit.ly/2FpoeBm">Powell and Tucker (2014)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>evolat(..., method=2)</code></td>
+<td><code>evolat(., method=2)</code></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td><a href="http://bit.ly/2FD83zE">Torcal and Lago (2015)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>M</code></td>
-<td><code>evolat(..., method=3)</code></td>
+<td><code>evolat(., method=3)</code></td>
 </tr>
 <tr class="even">
 <td>Effective Number of Parties</td>
@@ -79,55 +79,55 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 <td>Party System Nationalization</td>
 <td><a href="https://bit.ly/2w9QgtO">Mainwaring and Jones (2003)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code></td>
-<td><code>psn(..., method=1)</code></td>
+<td><code>psn(., method=1)</code></td>
 </tr>
 <tr class="even">
 <td></td>
 <td><a href="https://bit.ly/2oj76SY">Chhibber and Kollman (2004)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code></td>
-<td><code>psn(..., method=2)</code></td>
+<td><code>psn(., method=2)</code></td>
 </tr>
 <tr class="odd">
 <td>Party Nationalization</td>
 <td><a href="https://bit.ly/2w9QgtO">Mainwaring and Jones (2003)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>psn(..., method=1, pn=TRUE)</code></td>
+<td><code>psn(., method=1, pn=TRUE)</code></td>
 </tr>
 <tr class="even">
 <td>Electoral Disproportionality</td>
 <td>Rae (1971)</td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=1)</code></td>
+<td><code>dispro(., method=1)</code></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td><a href="https://bit.ly/2B1mIDH">Loosemore and Hanby (1971)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=2)</code></td>
+<td><code>dispro(., method=2)</code></td>
 </tr>
 <tr class="even">
 <td></td>
 <td>Lijphart_1 (1986)</td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=3)</code></td>
+<td><code>dispro(., method=3)</code></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td><a href="https://bit.ly/2McLshB">Lijphart_2 (1994)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=4)</code></td>
+<td><code>dispro(., method=4)</code></td>
 </tr>
 <tr class="even">
 <td></td>
 <td><a href="https://bit.ly/2M6CPoy">Gallagher (1991)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=5)</code></td>
+<td><code>dispro(., method=5)</code></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td><a href="https://bit.ly/2M9Bttr">Cox and Shugart (1991)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(..., method=6)</code></td>
+<td><code>dispro(., method=6)</code></td>
 </tr>
 </tbody>
 </table>
