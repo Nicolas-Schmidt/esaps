@@ -1,4 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
 ------------------------------------------------------------------------------------------------------------------------------
 
@@ -54,7 +55,7 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 <td>Electoral Volatility</td>
 <td><a href="http://bit.ly/2p4cyZQ">Pedersen (1979)</a></td>
 <td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>evolat(..., method=1)</code></td>
+<td><code>evolat(., method=1)</code></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -227,12 +228,12 @@ votes_2 <- data.frame(
 )
 
 votes_2
-#>   year country votes_party1 votes_party2 votes_party3 votes_party4
-#> 1 2000     URY           20           30           40           10
-#> 2 2005     URY           30           35           25           10
-#>   seats_party1 seats_party2 seats_party3 seats_party4
-#> 1           25           20           40           15
-#> 2           35           30           30            5
+#>   year country votes_party1 votes_party2 votes_party3 votes_party4 seats_party1
+#> 1 2000     URY           20           30           40           10           25
+#> 2 2005     URY           30           35           25           10           35
+#>   seats_party2 seats_party3 seats_party4
+#> 1           20           40           15
+#> 2           30           30            5
 
 votes_2c <- convert_esaps(dataset = votes_2, unit.name = "country", election.name = "year", seats = TRUE)
 
@@ -300,12 +301,12 @@ Electoral Disproportionality
 ``` r
 
 votes_2
-#>   year country votes_party1 votes_party2 votes_party3 votes_party4
-#> 1 2000     URY           20           30           40           10
-#> 2 2005     URY           30           35           25           10
-#>   seats_party1 seats_party2 seats_party3 seats_party4
-#> 1           25           20           40           15
-#> 2           35           30           30            5
+#>   year country votes_party1 votes_party2 votes_party3 votes_party4 seats_party1
+#> 1 2000     URY           20           30           40           10           25
+#> 2 2005     URY           30           35           25           10           35
+#>   seats_party2 seats_party3 seats_party4
+#> 1           20           40           15
+#> 2           30           30            5
 
 v2 <- convert_esaps(dataset = votes_2, unit.name = "country", election.name = "year", seats = TRUE)
 dispro(v2, 1:6, 1)
@@ -364,7 +365,6 @@ Linear Model
 
 ``` r
 library(tidyverse)
-#> Warning: package 'ggplot2' was built under R version 3.5.3
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
 
@@ -403,4 +403,5 @@ citation("esaps")
 
 ### Author
 
-Nicolas Schmidt (<nschmidt@cienciassociales.edu.uy>)
+Nicolas Schmidt
+(<a href="mailto:nschmidt@cienciassociales.edu.uy" class="email">nschmidt@cienciassociales.edu.uy</a>)
