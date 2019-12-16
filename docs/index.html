@@ -118,7 +118,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code>
 </td>
-<td><code><a href="reference/evolat.html">evolat(..., method=1)</a></code></td>
+<td><code><a href="reference/evolat.html">evolat(., method=1)</a></code></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -126,7 +126,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code>
 </td>
-<td><code><a href="reference/evolat.html">evolat(..., method=2)</a></code></td>
+<td><code><a href="reference/evolat.html">evolat(., method=2)</a></code></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -134,7 +134,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>M</code>
 </td>
-<td><code><a href="reference/evolat.html">evolat(..., method=3)</a></code></td>
+<td><code><a href="reference/evolat.html">evolat(., method=3)</a></code></td>
 </tr>
 <tr class="even">
 <td>Effective Number of Parties</td>
@@ -150,7 +150,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code>
 </td>
-<td><code>psn(..., method=1)</code></td>
+<td><code>psn(., method=1)</code></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -158,7 +158,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code>
 </td>
-<td><code>psn(..., method=2)</code></td>
+<td><code>psn(., method=2)</code></td>
 </tr>
 <tr class="odd">
 <td>Party Nationalization</td>
@@ -166,7 +166,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code>
 </td>
-<td><code>psn(..., method=1, pn=TRUE)</code></td>
+<td><code>psn(., method=1, pn=TRUE)</code></td>
 </tr>
 <tr class="even">
 <td>Electoral Disproportionality</td>
@@ -174,7 +174,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=1)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=1)</a></code></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -182,7 +182,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=2)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=2)</a></code></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -190,7 +190,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=3)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=3)</a></code></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -198,7 +198,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=4)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=4)</a></code></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -206,7 +206,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=5)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=5)</a></code></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -214,7 +214,7 @@
 <td>
 <code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code>
 </td>
-<td><code><a href="reference/dispro.html">dispro(..., method=6)</a></code></td>
+<td><code><a href="reference/dispro.html">dispro(., method=6)</a></code></td>
 </tr>
 </tbody>
 </table>
@@ -317,12 +317,12 @@
 <a class="sourceLine" id="cb3-85" title="85">)</a>
 <a class="sourceLine" id="cb3-86" title="86"></a>
 <a class="sourceLine" id="cb3-87" title="87">votes_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb3-88" title="88"><span class="co">#&gt;   year country votes_party1 votes_party2 votes_party3 votes_party4</span></a>
-<a class="sourceLine" id="cb3-89" title="89"><span class="co">#&gt; 1 2000     URY           20           30           40           10</span></a>
-<a class="sourceLine" id="cb3-90" title="90"><span class="co">#&gt; 2 2005     URY           30           35           25           10</span></a>
-<a class="sourceLine" id="cb3-91" title="91"><span class="co">#&gt;   seats_party1 seats_party2 seats_party3 seats_party4</span></a>
-<a class="sourceLine" id="cb3-92" title="92"><span class="co">#&gt; 1           25           20           40           15</span></a>
-<a class="sourceLine" id="cb3-93" title="93"><span class="co">#&gt; 2           35           30           30            5</span></a>
+<a class="sourceLine" id="cb3-88" title="88"><span class="co">#&gt;   year country votes_party1 votes_party2 votes_party3 votes_party4 seats_party1</span></a>
+<a class="sourceLine" id="cb3-89" title="89"><span class="co">#&gt; 1 2000     URY           20           30           40           10           25</span></a>
+<a class="sourceLine" id="cb3-90" title="90"><span class="co">#&gt; 2 2005     URY           30           35           25           10           35</span></a>
+<a class="sourceLine" id="cb3-91" title="91"><span class="co">#&gt;   seats_party2 seats_party3 seats_party4</span></a>
+<a class="sourceLine" id="cb3-92" title="92"><span class="co">#&gt; 1           20           40           15</span></a>
+<a class="sourceLine" id="cb3-93" title="93"><span class="co">#&gt; 2           30           30            5</span></a>
 <a class="sourceLine" id="cb3-94" title="94"></a>
 <a class="sourceLine" id="cb3-95" title="95">votes_2c &lt;-<span class="st"> </span><span class="kw"><a href="reference/convert_esaps.html">convert_esaps</a></span>(<span class="dt">dataset =</span> votes_<span class="dv">2</span>, <span class="dt">unit.name =</span> <span class="st">"country"</span>, <span class="dt">election.name =</span> <span class="st">"year"</span>, <span class="dt">seats =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-96" title="96"></a>
@@ -380,12 +380,12 @@
 <p>Electoral Disproportionality</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"></a>
 <a class="sourceLine" id="cb6-2" title="2">votes_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt;   year country votes_party1 votes_party2 votes_party3 votes_party4</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; 1 2000     URY           20           30           40           10</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; 2 2005     URY           30           35           25           10</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;   seats_party1 seats_party2 seats_party3 seats_party4</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 1           25           20           40           15</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 2           35           30           30            5</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt;   year country votes_party1 votes_party2 votes_party3 votes_party4 seats_party1</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; 1 2000     URY           20           30           40           10           25</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; 2 2005     URY           30           35           25           10           35</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;   seats_party2 seats_party3 seats_party4</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 1           20           40           15</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 2           30           30            5</span></a>
 <a class="sourceLine" id="cb6-9" title="9"></a>
 <a class="sourceLine" id="cb6-10" title="10">v2 &lt;-<span class="st"> </span><span class="kw"><a href="reference/convert_esaps.html">convert_esaps</a></span>(<span class="dt">dataset =</span> votes_<span class="dv">2</span>, <span class="dt">unit.name =</span> <span class="st">"country"</span>, <span class="dt">election.name =</span> <span class="st">"year"</span>, <span class="dt">seats =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb6-11" title="11"><span class="kw"><a href="reference/dispro.html">dispro</a></span>(v2, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">1</span>)</a>
@@ -436,31 +436,30 @@
 <a class="sourceLine" id="cb7-27" title="27"><span class="co">#&gt; 2 party_B     2000 0.864</span></a></code></pre></div>
 <p>Linear Model</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 3.5.3</span></a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4">dat &lt;-<span class="st"> </span><span class="kw">inner_join</span>(<span class="kw"><a href="reference/evolat.html">evolat</a></span>(votes, <span class="dv">1</span>), <span class="kw"><a href="reference/enp.html">enp</a></span>(votes))</a>
-<a class="sourceLine" id="cb8-5" title="5"></a>
-<a class="sourceLine" id="cb8-6" title="6">dat</a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;   election unit eVolat  enp</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt; 1     2000  ARG     45 1.85</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt; 2     2005  ARG     30 2.78</span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt; 3     1998  BRA     25 1.98</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt; 4     2000  URY     20 2.78</span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt; 5     2005  URY     20 3.33</span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt; 6     2010  URY     15 3.92</span></a>
-<a class="sourceLine" id="cb8-14" title="14"></a>
-<a class="sourceLine" id="cb8-15" title="15"><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/formula.html">formula</a></span>(dat[,<span class="dv">4</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">data =</span> dat)</a>
-<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt; Call:</span></a>
-<a class="sourceLine" id="cb8-18" title="18"><span class="co">#&gt; lm(formula = formula(dat[, 4:3]), data = dat)</span></a>
-<a class="sourceLine" id="cb8-19" title="19"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt; Coefficients:</span></a>
-<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt; (Intercept)       eVolat  </span></a>
-<a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt;     4.25394     -0.05731</span></a>
-<a class="sourceLine" id="cb8-23" title="23"></a>
-<a class="sourceLine" id="cb8-24" title="24"><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(<span class="dt">x =</span> enp, <span class="dt">y =</span> eVolat )) <span class="op">+</span></a>
-<a class="sourceLine" id="cb8-25" title="25"><span class="st">        </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-26" title="26"><span class="st">        </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">dat &lt;-<span class="st"> </span><span class="kw">inner_join</span>(<span class="kw"><a href="reference/evolat.html">evolat</a></span>(votes, <span class="dv">1</span>), <span class="kw"><a href="reference/enp.html">enp</a></span>(votes))</a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5">dat</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;   election unit eVolat  enp</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt; 1     2000  ARG     45 1.85</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt; 2     2005  ARG     30 2.78</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt; 3     1998  BRA     25 1.98</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt; 4     2000  URY     20 2.78</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt; 5     2005  URY     20 3.33</span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt; 6     2010  URY     15 3.92</span></a>
+<a class="sourceLine" id="cb8-13" title="13"></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/formula.html">formula</a></span>(dat[,<span class="dv">4</span><span class="op">:</span><span class="dv">3</span>]), <span class="dt">data =</span> dat)</a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt; lm(formula = formula(dat[, 4:3]), data = dat)</span></a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb8-19" title="19"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt; (Intercept)       eVolat  </span></a>
+<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;     4.25394     -0.05731</span></a>
+<a class="sourceLine" id="cb8-22" title="22"></a>
+<a class="sourceLine" id="cb8-23" title="23"><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(<span class="dt">x =</span> enp, <span class="dt">y =</span> eVolat )) <span class="op">+</span></a>
+<a class="sourceLine" id="cb8-24" title="24"><span class="st">        </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-25" title="25"><span class="st">        </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="reference/figures/f1-1.png"></p>
 </div>
 </div>
