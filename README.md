@@ -5,7 +5,9 @@ The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;marg
 
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/esaps)](https://cran.r-project.org/package=esaps)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
+[![CRAN RStudio
+mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 
