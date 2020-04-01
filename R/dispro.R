@@ -59,7 +59,7 @@ dispro <- function(tidy_data,
         if(!is.data.frame(tidy_data)){
                 stop("'tidy_data' must be a 'data.frame'.")
         }
-
+        tidy_data <- as.data.frame(tidy_data)
         if(missing(method)){
                 stop("You must select only one method.")
         }
