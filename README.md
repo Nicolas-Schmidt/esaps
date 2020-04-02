@@ -5,6 +5,11 @@ The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;marg
 
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
+[![cran
+checks](https://cranchecks.info/badges/summary/esaps)](https://cran.r-project.org/web/checks/check_results_esaps.html)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
@@ -367,6 +372,7 @@ Linear Model
 
 ``` r
 library(tidyverse)
+#> Warning: package 'tidyverse' was built under R version 3.6.3
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
 
