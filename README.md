@@ -1,7 +1,5 @@
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
-------------------------------------------------------------------------------------------------------------------------------
+## The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
 
 [![Build
 Status](https://travis-ci.org/Nicolas-Schmidt/esaps.svg?branch=master)](https://travis-ci.org/Nicolas-Schmidt/esaps)
@@ -11,6 +9,7 @@ checks](https://cranchecks.info/badges/summary/esaps)](https://cran.r-project.or
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
+[![](https://img.shields.io/badge/devel%20version-0.2.0-blue.svg)](https://github.com/Nicolas-Schmidt/esaps)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 [![CRAN RStudio mirror
@@ -42,102 +41,21 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 
 ### Functions
 
-<table>
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 30%" />
-<col style="width: 15%" />
-<col style="width: 26%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Indicator</th>
-<th>Method</th>
-<th>Variables</th>
-<th>Function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Electoral Volatility</td>
-<td><a href="http://bit.ly/2p4cyZQ">Pedersen (1979)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>evolat(., method=1)</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="http://bit.ly/2FpoeBm">Powell and Tucker (2014)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>evolat(., method=2)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="http://bit.ly/2FD83zE">Torcal and Lago (2015)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>M</code></td>
-<td><code>evolat(., method=3)</code></td>
-</tr>
-<tr class="even">
-<td>Effective Number of Parties</td>
-<td><a href="http://bit.ly/2oYU4dV">Laakso and Taagepera (1979)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> or <code>seats</code></td>
-<td><code>enp()</code></td>
-</tr>
-<tr class="odd">
-<td>Party System Nationalization</td>
-<td><a href="https://bit.ly/2w9QgtO">Mainwaring and Jones (2003)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code></td>
-<td><code>psn(., method=1)</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="https://bit.ly/2oj76SY">Chhibber and Kollman (2004)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>votes_nac</code></td>
-<td><code>psn(., method=2)</code></td>
-</tr>
-<tr class="odd">
-<td>Party Nationalization</td>
-<td><a href="https://bit.ly/2w9QgtO">Mainwaring and Jones (2003)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code></td>
-<td><code>psn(., method=1, pn=TRUE)</code></td>
-</tr>
-<tr class="even">
-<td>Electoral Disproportionality</td>
-<td>Rae (1971)</td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=1)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="https://bit.ly/2B1mIDH">Loosemore and Hanby (1971)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=2)</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Lijphart_1 (1986)</td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=3)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="https://bit.ly/2McLshB">Lijphart_2 (1994)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=4)</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><a href="https://bit.ly/2M6CPoy">Gallagher (1991)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=5)</code></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><a href="https://bit.ly/2M9Bttr">Cox and Shugart (1991)</a></td>
-<td><code>election</code> <code>unit</code> <code>party</code> <code>votes</code> <code>seats</code></td>
-<td><code>dispro(., method=6)</code></td>
-</tr>
-</tbody>
-</table>
+| Indicator                    | Method                                                | Variables                                     | Function                    |
+| ---------------------------- | ----------------------------------------------------- | --------------------------------------------- | --------------------------- |
+| Electoral Volatility         | [Pedersen (1979)](http://bit.ly/2p4cyZQ)              | `election` `unit` `party` `votes`             | `evolat(., method=1)`       |
+|                              | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)     | `election` `unit` `party` `votes`             | `evolat(., method=2)`       |
+|                              | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)       | `election` `unit` `party` `votes` `M`         | `evolat(., method=3)`       |
+| Effective Number of Parties  | [Laakso and Taagepera (1979)](http://bit.ly/2oYU4dV)  | `election` `unit` `party` `votes` or `seats`  | `enp()`                     |
+| Party System Nationalization | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes` `votes_nac` | `psn(., method=1)`          |
+|                              | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY) | `election` `unit` `party` `votes` `votes_nac` | `psn(., method=2)`          |
+| Party Nationalization        | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes`             | `psn(., method=1, pn=TRUE)` |
+| Electoral Disproportionality | Rae (1971)                                            | `election` `unit` `party` `votes` `seats`     | `dispro(., method=1)`       |
+|                              | [Loosemore and Hanby (1971)](https://bit.ly/2B1mIDH)  | `election` `unit` `party` `votes` `seats`     | `dispro(., method=2)`       |
+|                              | Lijphart\_1 (1986)                                    | `election` `unit` `party` `votes` `seats`     | `dispro(., method=3)`       |
+|                              | [Lijphart\_2 (1994)](https://bit.ly/2McLshB)          | `election` `unit` `party` `votes` `seats`     | `dispro(., method=4)`       |
+|                              | [Gallagher (1991)](https://bit.ly/2M6CPoy)            | `election` `unit` `party` `votes` `seats`     | `dispro(., method=5)`       |
+|                              | [Cox and Shugart (1991)](https://bit.ly/2M9Bttr)      | `election` `unit` `party` `votes` `seats`     | `dispro(., method=6)`       |
 
 ### Indicators and Variables
 
@@ -373,6 +291,10 @@ Linear Model
 ``` r
 library(tidyverse)
 #> Warning: package 'tidyverse' was built under R version 3.6.3
+#> Warning: package 'ggplot2' was built under R version 3.6.3
+#> Warning: package 'tibble' was built under R version 3.6.3
+#> Warning: package 'tidyr' was built under R version 3.6.3
+#> Warning: package 'dplyr' was built under R version 3.6.3
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
 
@@ -399,7 +321,7 @@ ggplot(dat, aes(x = enp, y = eVolat )) +
         geom_smooth(method = lm, se = TRUE)
 ```
 
-![](man/figures/f1-1.png)
+<img src="man/figures/README-f1-1.png" width="80%" />
 
 ### Citation
 
@@ -411,5 +333,4 @@ citation("esaps")
 
 ### Author
 
-Nicolas Schmidt
-(<a href="mailto:nschmidt@cienciassociales.edu.uy" class="email">nschmidt@cienciassociales.edu.uy</a>)
+Nicolas Schmidt (<nschmidt@cienciassociales.edu.uy>)
