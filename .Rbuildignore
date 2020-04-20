@@ -5,7 +5,7 @@
 ^NEWS\.md$
 ^NEWS\.Rmd$
 ^README-.*\.png$
-^\.travis\.yml$
 ^cran-comments\.md$
 ^cran-comments\.Rmd$
 ^\.httr-oauth$
+^\.github$
