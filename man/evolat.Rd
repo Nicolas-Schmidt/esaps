@@ -4,8 +4,14 @@
 \alias{evolat}
 \title{Electoral volatility calculation}
 \usage{
-evolat(tidy_data, method, threshold = 2, summary = FALSE, digits = 2,
-  scale = 100)
+evolat(
+  tidy_data,
+  method,
+  threshold = 2,
+  summary = FALSE,
+  digits = 2,
+  scale = 100
+)
 }
 \arguments{
 \item{tidy_data}{data.frame that contains the following variables with these names:

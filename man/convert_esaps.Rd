@@ -4,9 +4,18 @@
 \alias{convert_esaps}
 \title{Converts data in table form to tidy_data}
 \usage{
-convert_esaps(path = NULL, dataset = NULL, file.name = NULL,
-  nSheets = 1, election.name, unit.name, M.name = NULL,
-  votes_nac.name = NULL, seats = FALSE, allSheet = FALSE)
+convert_esaps(
+  path = NULL,
+  dataset = NULL,
+  file.name = NULL,
+  nSheets = 1,
+  election.name,
+  unit.name,
+  M.name = NULL,
+  votes_nac.name = NULL,
+  seats = FALSE,
+  allSheet = FALSE
+)
 }
 \arguments{
 \item{path}{Character vector containing one or more path names.}

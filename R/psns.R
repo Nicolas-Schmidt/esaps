@@ -60,6 +60,8 @@ psns <- function(tidy_data,
                 pns = FALSE,
                 scale = 100){
 
+        tidy_data <- tidy_data[, names(tidy_data) %in% c('election','unit', 'party', 'votes', 'votes_nac')]
+
         if(!is.data.frame(tidy_data)){
                 stop("'tidy_data' must be a 'data.frame'.")
         }

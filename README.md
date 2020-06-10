@@ -36,7 +36,7 @@ You can install the released version (`0.1.0`) of esaps from
 install.packages("esaps")
 ```
 
-And the development version (`0.2.0`) from GitHub with:
+And the development version (`0.2.1`) from GitHub with:
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
@@ -294,11 +294,6 @@ Linear Model
 
 ``` r
 library(tidyverse)
-#> Warning: package 'tidyverse' was built under R version 3.6.3
-#> Warning: package 'ggplot2' was built under R version 3.6.3
-#> Warning: package 'tibble' was built under R version 3.6.3
-#> Warning: package 'tidyr' was built under R version 3.6.3
-#> Warning: package 'dplyr' was built under R version 3.6.3
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
 
