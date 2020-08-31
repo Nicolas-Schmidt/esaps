@@ -179,6 +179,7 @@ evolat<-function(tidy_data,
         }
 
         if (method == "Torcal and Lago" || method == 3){
+                if(names(tidy_data[[1]])[3] != "M"){stop("The magnitude is missing.")}
                 data2 <- tidy_data
 
                 lista_END <- list()
@@ -189,7 +190,7 @@ evolat<-function(tidy_data,
                         for(j in 1:(nrow(data2[[i]])-1)){
                                 lista_END[[i]][[j]] <- data2[[i]][c(j,j+1),]
                                 lista_EXO[[i]][[j]] <- data2[[i]][c(j,j+1),]
-                                srow <- sort(lista_END[[i]][[j]][2,4:ncol(lista_END[[i]][[j]])], decreasing = T ) ###
+                                srow <- sort(lista_END[[i]][[j]][2,4:ncol(lista_END[[i]][[j]])], decreasing = TRUE ) ###
                                 M1 <- lista_END[[i]][[j]][2,3] ###
                                 no_zero <- which(lista_END[[i]][[j]][2,] %in% srow[1:M1])
                                 lista_END[[i]][[j]][, -c(1:2, no_zero)] <- 0L
