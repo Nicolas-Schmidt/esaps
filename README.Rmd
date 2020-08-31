@@ -40,7 +40,7 @@ You can install the released version (`0.1.0`) of esaps from [CRAN](https://cran
 install.packages("esaps")
 ```
 
-And the development version (`0.2.1`) from GitHub with:
+And the development version (`0.2.2`) from GitHub with:
 
 ```{r eval=FALSE}
 if (!require("remotes")) install.packages("remotes")

@@ -13,7 +13,7 @@ checks](https://cranchecks.info/badges/summary/esaps)](https://cran.r-project.or
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
-[![](https://img.shields.io/badge/devel%20version-0.2.0-blue.svg)](https://github.com/Nicolas-Schmidt/esaps)
+[![](https://img.shields.io/badge/devel%20version-0.2.2-blue.svg)](https://github.com/Nicolas-Schmidt/esaps)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 
@@ -36,7 +36,7 @@ You can install the released version (`0.1.0`) of esaps from
 install.packages("esaps")
 ```
 
-And the development version (`0.2.1`) from GitHub with:
+And the development version (`0.2.2`) from GitHub with:
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
