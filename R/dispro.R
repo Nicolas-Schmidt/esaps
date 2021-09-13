@@ -1,12 +1,7 @@
 #' @title Electoral Disproportionality
 #'
-#' @description Electoral Disproportionality:
-#'     Rae (1971),
-#'     \href{https://bit.ly/2B1mIDH}{Loosemore and Hanby (1971)},
-#'     Lijphart (1986),
-#'     \href{https://bit.ly/2McLshB}{Lijphart (1994)},
-#'     \href{https://bit.ly/2M6CPoy}{Gallagher (1991)} and
-#'     \href{https://bit.ly/2M9Bttr}{Cox and Shugart (1991)}.
+#' @description Electoral Disproportionality: Rae (1971), Loosemore and Hanby (1971), Lijphart (1986),
+#'     Lijphart (1994), Gallagher (1991) and Cox and Shugart (1991).
 #'
 #' @param tidy_data data.frame that contains the following variables with these names:
 #'    \itemize{

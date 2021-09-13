@@ -39,10 +39,9 @@ if \code{summary = FALSE,} return data.frame.
 }
 \description{
 The Effective Number of Parties (ENP) is an index developed by
-    \href{http://bit.ly/2oYU4dV}{Laakso and Taagepera (1979)} that allows to
-    count the relevant parties in a party system. The formula consists on
-    dividing one over the sum of the squares of the proportions (votes or seats)
-    that the parties obtain in an electoral instance.
+    Laakso and Taagepera (1979) that allows to count the relevant parties in a
+    party system. The formula consists on dividing one over the sum of the squares
+    of the proportions (votes or seats) that the parties obtain in an electoral instance.
 }
 \examples{
 votes <- data.frame(election = rep(c(2000, 2005), each = 4),

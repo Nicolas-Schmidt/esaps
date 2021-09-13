@@ -39,9 +39,7 @@ if \code{pns = FALSE,} return data.frame.
            }
 }
 \description{
-Party System Nationalization Score
-    \href{https://bit.ly/2w9QgtO}{Mainwaring and Jones (2003)} and
-    \href{https://bit.ly/2oj76SY}{Chhibber and Kollman (2004)}
+Party System Nationalization Score Mainwaring and Jones (2003) and Chhibber and Kollman (2004)
 }
 \examples{
 votes <- data.frame(election = rep(2000,4),

@@ -1,10 +1,9 @@
 #' @title Effective Number of Parties
 #'
 #' @description The Effective Number of Parties (ENP) is an index developed by
-#'     \href{http://bit.ly/2oYU4dV}{Laakso and Taagepera (1979)} that allows to
-#'     count the relevant parties in a party system. The formula consists on
-#'     dividing one over the sum of the squares of the proportions (votes or seats)
-#'     that the parties obtain in an electoral instance.
+#'     Laakso and Taagepera (1979) that allows to count the relevant parties in a
+#'     party system. The formula consists on dividing one over the sum of the squares
+#'     of the proportions (votes or seats) that the parties obtain in an electoral instance.
 #' @param tidy_data data.frame that contains the following variables with these names:
 #'    \itemize{
 #'             \item{\code{election}: year of election.}

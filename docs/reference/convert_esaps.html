@@ -89,18 +89,21 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Nicolas-Schmidt/esaps/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,18 +130,18 @@
     the tidy_data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>convert_esaps</span>(
-  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>dataset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>file.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>nSheets</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='no'>election.name</span>,
-  <span class='no'>unit.name</span>,
-  <span class='kw'>M.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>votes_nac.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>seats</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>allSheet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>convert_esaps</span><span class='op'>(</span>
+  path <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dataset <span class='op'>=</span> <span class='cn'>NULL</span>,
+  file.name <span class='op'>=</span> <span class='cn'>NULL</span>,
+  nSheets <span class='op'>=</span> <span class='fl'>1</span>,
+  <span class='va'>election.name</span>,
+  <span class='va'>unit.name</span>,
+  M.name <span class='op'>=</span> <span class='cn'>NULL</span>,
+  votes_nac.name <span class='op'>=</span> <span class='cn'>NULL</span>,
+  seats <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  allSheet <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -197,63 +200,68 @@ files selected in <code>file.name</code>. This argument takes precedence over <c
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>data.frame</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Nicolas Schmidt <a href='mailto:nschmidt@cienciassociales.edu.uy'>nschmidt@cienciassociales.edu.uy</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>votes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"ARG"</span>, <span class='fl'>3</span>),
-                         <span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1995</span>, <span class='fl'>2000</span>, <span class='fl'>2005</span>),
-                         <span class='kw'>party_A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>40</span>,<span class='fl'>10</span>,<span class='fl'>20</span>),
-                         <span class='kw'>party_B</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>35</span>,<span class='fl'>20</span>,<span class='fl'>40</span>),
-                         <span class='kw'>party_C</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>25</span>,<span class='fl'>70</span>,<span class='fl'>40</span>)),
-              <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"URY"</span>, <span class='fl'>4</span>),
-                         <span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1995</span>, <span class='fl'>2000</span>, <span class='fl'>2005</span>, <span class='fl'>2010</span>),
-                         <span class='kw'>party_A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>,<span class='fl'>30</span>,<span class='fl'>20</span>,<span class='fl'>20</span>),
-                         <span class='kw'>party_B</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>,<span class='fl'>50</span>,<span class='fl'>40</span>, <span class='fl'>30</span>),
-                         <span class='kw'>party_C</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>,<span class='fl'>10</span>,<span class='fl'>30</span>, <span class='fl'>25</span>),
-                         <span class='kw'>party_D</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>25</span>)),
-              <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>country</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"BRA"</span>, <span class='fl'>2</span>),
-                         <span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1993</span>, <span class='fl'>1998</span>),
-                         <span class='kw'>party_A</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>, <span class='fl'>55</span>),
-                         <span class='kw'>party_B</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>70</span>, <span class='fl'>45</span>)))
+    <pre class="examples"><div class='input'><span class='va'>votes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"ARG"</span>, <span class='fl'>3</span><span class='op'>)</span>,
+                         year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1995</span>, <span class='fl'>2000</span>, <span class='fl'>2005</span><span class='op'>)</span>,
+                         party_A <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,<span class='fl'>10</span>,<span class='fl'>20</span><span class='op'>)</span>,
+                         party_B <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>35</span>,<span class='fl'>20</span>,<span class='fl'>40</span><span class='op'>)</span>,
+                         party_C <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>25</span>,<span class='fl'>70</span>,<span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span>,
+              <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"URY"</span>, <span class='fl'>4</span><span class='op'>)</span>,
+                         year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1995</span>, <span class='fl'>2000</span>, <span class='fl'>2005</span>, <span class='fl'>2010</span><span class='op'>)</span>,
+                         party_A <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>,<span class='fl'>30</span>,<span class='fl'>20</span>,<span class='fl'>20</span><span class='op'>)</span>,
+                         party_B <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>,<span class='fl'>50</span>,<span class='fl'>40</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                         party_C <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>,<span class='fl'>10</span>,<span class='fl'>30</span>, <span class='fl'>25</span><span class='op'>)</span>,
+                         party_D <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='fl'>25</span><span class='op'>)</span><span class='op'>)</span>,
+              <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"BRA"</span>, <span class='fl'>2</span><span class='op'>)</span>,
+                         year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1993</span>, <span class='fl'>1998</span><span class='op'>)</span>,
+                         party_A <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>55</span><span class='op'>)</span>,
+                         party_B <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>70</span>, <span class='fl'>45</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>votes</span> <span class='kw'>&lt;-</span> <span class='fu'>convert_esaps</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>votes</span>, <span class='kw'>unit.name</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>election.name</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
-
-
-<span class='no'>votes2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>2005</span>),
-                     <span class='kw'>country</span> <span class='kw'>=</span> <span class='st'>"URY"</span>,
-                     <span class='kw'>votes_party1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>30</span>),
-                     <span class='kw'>votes_party2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>30</span>, <span class='fl'>35</span>),
-                     <span class='kw'>votes_party3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>25</span>),
-                     <span class='kw'>votes_party4</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>10</span>),
-                     <span class='kw'>seats_party1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>25</span>, <span class='fl'>35</span>),
-                     <span class='kw'>seats_party2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>30</span>),
-                     <span class='kw'>seats_party3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>40</span>, <span class='fl'>30</span>),
-                     <span class='kw'>seats_party4</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>5</span>))
-
-<span class='no'>votes</span> <span class='kw'>&lt;-</span> <span class='fu'>convert_esaps</span>(<span class='kw'>dataset</span> <span class='kw'>=</span> <span class='no'>votes2</span>, <span class='kw'>unit.name</span> <span class='kw'>=</span> <span class='st'>"country"</span>, <span class='kw'>election.name</span> <span class='kw'>=</span> <span class='st'>"year"</span>,
-                       <span class='kw'>seats</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='va'>votes</span> <span class='op'>&lt;-</span> <span class='fu'>convert_esaps</span><span class='op'>(</span>dataset <span class='op'>=</span> <span class='va'>votes</span>, unit.name <span class='op'>=</span> <span class='st'>"country"</span>, election.name <span class='op'>=</span> <span class='st'>"year"</span><span class='op'>)</span>
 
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>v1</span> <span class='kw'>&lt;-</span> <span class='fu'>convert_esaps</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-                   <span class='kw'>file.name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"electionBRA.xlsx"</span>, <span class='st'>"electionARG.xlsx"</span>),
-                   <span class='kw'>election.name</span> <span class='kw'>=</span> <span class='st'>"elec"</span>,
-                   <span class='kw'>unit.name</span> <span class='kw'>=</span> <span class='st'>"district"</span>,
-                   <span class='kw'>allSheet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='va'>votes2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>2005</span><span class='op'>)</span>,
+                     country <span class='op'>=</span> <span class='st'>"URY"</span>,
+                     votes_party1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                     votes_party2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>30</span>, <span class='fl'>35</span><span class='op'>)</span>,
+                     votes_party3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='fl'>25</span><span class='op'>)</span>,
+                     votes_party4 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='fl'>10</span><span class='op'>)</span>,
+                     seats_party1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>25</span>, <span class='fl'>35</span><span class='op'>)</span>,
+                     seats_party2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                     seats_party3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>, <span class='fl'>30</span><span class='op'>)</span>,
+                     seats_party4 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='no'>v2</span> <span class='kw'>&lt;-</span><span class='fu'>convert_esaps</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(),
-                   <span class='kw'>file.name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ARG.ods"</span>, <span class='st'>"URY.ods"</span>, <span class='st'>"BRA.ods"</span>),
-                   <span class='kw'>nCountry</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>1</span>),
-                   <span class='kw'>election.name</span> <span class='kw'>=</span> <span class='st'>"elec"</span>,
-                   <span class='kw'>unit.name</span> <span class='kw'>=</span> <span class='st'>"province"</span>)
+<span class='va'>votes</span> <span class='op'>&lt;-</span> <span class='fu'>convert_esaps</span><span class='op'>(</span>dataset <span class='op'>=</span> <span class='va'>votes2</span>, unit.name <span class='op'>=</span> <span class='st'>"country"</span>, election.name <span class='op'>=</span> <span class='st'>"year"</span>,
+                       seats <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='no'>v3</span> <span class='kw'>&lt;-</span> <span class='fu'>convert_esaps</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='kw pkg'>here</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span>(),
-                   <span class='kw'>file.name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"*.xlsx"</span>),
-                   <span class='kw'>election.name</span> <span class='kw'>=</span> <span class='st'>"year"</span>,
-                   <span class='kw'>unit.name</span> <span class='kw'>=</span> <span class='st'>"country"</span>,
-                   <span class='kw'>M.name</span> <span class='kw'>=</span> <span class='st'>"magnitude"</span>,
-                   <span class='kw'>seats</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                   <span class='kw'>allSheet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-}</div></pre>
+
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>v1</span> <span class='op'>&lt;-</span> <span class='fu'>convert_esaps</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+                   file.name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"electionBRA.xlsx"</span>, <span class='st'>"electionARG.xlsx"</span><span class='op'>)</span>,
+                   election.name <span class='op'>=</span> <span class='st'>"elec"</span>,
+                   unit.name <span class='op'>=</span> <span class='st'>"district"</span>,
+                   allSheet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+
+<span class='va'>v2</span> <span class='op'>&lt;-</span><span class='fu'>convert_esaps</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>,
+                   file.name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ARG.ods"</span>, <span class='st'>"URY.ods"</span>, <span class='st'>"BRA.ods"</span><span class='op'>)</span>,
+                   nCountry <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>)</span>,
+                   election.name <span class='op'>=</span> <span class='st'>"elec"</span>,
+                   unit.name <span class='op'>=</span> <span class='st'>"province"</span><span class='op'>)</span>
+
+<span class='va'>v3</span> <span class='op'>&lt;-</span> <span class='fu'>convert_esaps</span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='op'>)</span>,
+                   file.name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>pattern <span class='op'>=</span> <span class='st'>"*.xlsx"</span><span class='op'>)</span>,
+                   election.name <span class='op'>=</span> <span class='st'>"year"</span>,
+                   unit.name <span class='op'>=</span> <span class='st'>"country"</span>,
+                   M.name <span class='op'>=</span> <span class='st'>"magnitude"</span>,
+                   seats <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                   allSheet <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -269,7 +277,7 @@ files selected in <code>file.name</code>. This argument takes precedence over <c
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

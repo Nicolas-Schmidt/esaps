@@ -34,13 +34,8 @@ If \code{scale = 1} the variation will be between 0 and 1.}
 data.frame.
 }
 \description{
-Electoral Disproportionality:
-    Rae (1971),
-    \href{https://bit.ly/2B1mIDH}{Loosemore and Hanby (1971)},
-    Lijphart (1986),
-    \href{https://bit.ly/2McLshB}{Lijphart (1994)},
-    \href{https://bit.ly/2M6CPoy}{Gallagher (1991)} and
-    \href{https://bit.ly/2M9Bttr}{Cox and Shugart (1991)}.
+Electoral Disproportionality: Rae (1971), Loosemore and Hanby (1971), Lijphart (1986),
+    Lijphart (1994), Gallagher (1991) and Cox and Shugart (1991).
 }
 \examples{
 votes <- data.frame(election = rep(c(2000, 2005), each = 4),

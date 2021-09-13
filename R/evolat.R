@@ -1,9 +1,6 @@
 #' @title Electoral volatility calculation
 #'
-#' @description Electoral volatility calculation:
-#'     \href{http://bit.ly/2p4cyZQ}{Pedersen (1979)},
-#'     \href{http://bit.ly/2FpoeBm}{Powell and Tucker (2014)} and
-#'     \href{http://bit.ly/2FD83zE}{Torcal and Lago (2015)}.
+#' @description Electoral volatility calculation: Pedersen (1979), Powell and Tucker (2014) and Torcal and Lago (2015).
 #' @param tidy_data data.frame that contains the following variables with these names:
 #'    \itemize{
 #'             \item{\code{election}: year of election.}

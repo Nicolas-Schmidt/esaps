@@ -1,8 +1,6 @@
 #' @title Party System Nationalization Score
 #'
-#' @description Party System Nationalization Score
-#'     \href{https://bit.ly/2w9QgtO}{Mainwaring and Jones (2003)} and
-#'     \href{https://bit.ly/2oj76SY}{Chhibber and Kollman (2004)}
+#' @description Party System Nationalization Score Mainwaring and Jones (2003) and Chhibber and Kollman (2004)
 #'
 #' @param tidy_data data.frame that contains the following variables with these names:
 #'    \itemize{
