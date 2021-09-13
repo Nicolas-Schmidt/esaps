@@ -56,13 +56,9 @@ dispro <- function(tidy_data,
                    method,
                    scale = 1){
 
-        if(!is.data.frame(tidy_data)){
-                stop("'tidy_data' must be a 'data.frame'.")
-        }
+        if(!is.data.frame(tidy_data)){stop("'tidy_data' must be a 'data.frame'.", call. = FALSE)}
         tidy_data <- as.data.frame(tidy_data)
-        if(missing(method)){
-                stop("You must select only one method.")
-        }
+        if(missing(method)){stop("You must select only one method.", call. = FALSE)}
         ch.met <- c("Rae",
                     "Loosemore and Hanby",
                     "Lijphart_1",
@@ -73,47 +69,42 @@ dispro <- function(tidy_data,
         nu.met <- 1:length(ch.met)
 
         if(is.numeric(method)){
-                if(!all(method %in% nu.met) ){
-                        stop("The selected method does not exist.")
-                }
+                if(!all(method %in% nu.met) ){stop("The selected method does not exist.", call. = FALSE)}
                 met <- method + 2
         }
         if(is.character(method)){
-                if(!all(method %in% ch.met)){
-                        stop("The selected method does not exist.")
-                }
+                if(!all(method %in% ch.met)){stop("The selected method does not exist.", call. = FALSE)}
                 met <- which(ch.met %in% method)
                 met <- met + 2
         }
-        if(scale != 100 && scale != 1){
-                stop("The value of 'scale' is not correct.")
-        }
+        if(scale != 100 && scale != 1){stop("The value of 'scale' is not correct.", call. = FALSE)}
         vars <- c("election", "unit", "party", "votes", "seats")
         if(all(vars %in% names(tidy_data))){
                if(ncol(tidy_data)!=5){
                        tidy_data <- tidy_data[, vars]
                }
         }else{
-                stop("The names of the variables should be: 'election', 'unit', 'party', 'votes' and 'seats'.")
+                stop("The names of the variables should be: 'election', 'unit', 'party', 'votes' and 'seats'.", call. = FALSE)
         }
 
         tidy_data <- tidy_data[, vars]
-        if(sum(is.na(tidy_data[, -3])) != 0){
-                stop("The variable 'election','unit','votes' or 'seats' must not have NA values.")
+        if(sum(is.na(tidy_data[, -3])) != 0){stop("The variable 'election','unit','votes' or 'seats' must not have NA values.", call. = FALSE)
         }
         v1 <- unlist(lapply(split(tidy_data, tidy_data$unit), function(x){split(x, x$election)}), recursive = FALSE)
-        v2 <- lapply(v1, function(x){cbind.data.frame(x, t.votes = (x$votes/sum(x$votes))*scale,
-                                                      t.seats = (x$seats/sum(x$seats))*scale )})
-        v3 <- lapply(v2, function(x){cbind.data.frame(x, abso = abs(x$t.votes-x$t.seats))})
+        v2 <- lapply(v1, function(x){cbind.data.frame(x,
+                                                      t.votes     = (x$votes/sum(x$votes))*scale,
+                                                      t.seats     = (x$seats/sum(x$seats))*scale )})
+        v3 <- lapply(v2, function(x){cbind.data.frame(x,
+                                                      abso        = abs(x$t.votes-x$t.seats))})
         v4 <- lapply(v3, function(x){cbind.data.frame(x,
-                                                      Rae = round(sum(x$abso/nrow(x)),2),
-                                                      LH = round(sum(x$abso/2),2),
-                                                      Lijphart_1 = round(max(x$abso),2),
-                                                      Lijphart_2 = round(sum(x$abso)/(1/sum((x$t.votes/sum(x$t.votes))^2)),2),
-                                                      Gallagher = round(sqrt(sum(x$abso/2)),2),
+                                                      Rae         = round(sum(x$abso/nrow(x)),2),
+                                                      LH          = round(sum(x$abso/2),2),
+                                                      Lijphart_1  = round(max(x$abso),2),
+                                                      Lijphart_2  = round(sum(x$abso)/(1/sum((x$t.votes/sum(x$t.votes))^2)),2),
+                                                      Gallagher   = round(sqrt(sum(x$abso/2)),2),
                                                       Cox_Shugart = round(stats::lm(x$t.votes ~ x$t.seats)$coefficients[2],2)
                                                       )})
-        eof<- do.call(rbind, lapply(v4, "[",1, -c(3:8)))
+        eof <- do.call(rbind, lapply(v4, "[",1, -c(3:8)))
         rownames(eof) <- NULL
         out <- eof[,c(1,2, met)]
         out

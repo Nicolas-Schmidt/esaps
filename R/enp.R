@@ -54,14 +54,12 @@ enp <- function(tidy_data,
                 enp_seats = FALSE,
                 summary = FALSE){
 
-        if(!is.data.frame(tidy_data)){
-                stop("'tidy_data' must be a 'data.frame'.")
-        }
+        if(!is.data.frame(tidy_data)){stop("'tidy_data' must be a 'data.frame'.", call. = FALSE)}
 
         vars <- c("election", "unit", "party", "votes", "seats")
         if(isTRUE(enp_seats)){
                 if(all(vars %in% names(tidy_data))){
-                        loc <- which(names(tidy_data)%in%vars[4:5])
+                        loc <- which(names(tidy_data) %in% vars[4:5])
                         colnames(tidy_data)[loc] <- c("enp", "enp_c")
                         vars[4:5] <- c("enp", "enp_c")
                         if(ncol(tidy_data) > 5){
@@ -70,7 +68,7 @@ enp <- function(tidy_data,
                                 tidy_data <- tidy_data[, vars]
                         }
                 }else{
-                        stop("The names of the variables should be: 'election', 'unit', 'party', 'votes' and 'seats'.")
+                        stop("The names of the variables should be: 'election', 'unit', 'party', 'votes' and 'seats'.", call. = FALSE)
                 }
         }else{
                 vars <- vars[-5]
@@ -84,15 +82,12 @@ enp <- function(tidy_data,
                                 tidy_data <- tidy_data[, vars]
                         }
                 }else{
-                        stop("The names of the variables should be: 'election', 'unit', 'party' and 'votes'.")
+                        stop("The names of the variables should be: 'election', 'unit', 'party' and 'votes'.", call. = FALSE)
                 }
         }
-        if(sum(is.na(tidy_data[, -3])) != 0){
-                stop("The variable 'election','unit','votes' or 'seats' must not have NA values.")
-        }
-        ENP  <- function(x){1/sum((x/sum(x))^2)}
-        v1 <- unlist(lapply(split(tidy_data, tidy_data$unit), function(x){split(x, x$election)}), recursive = FALSE)
-        out  <- lapply(v1, function(x){round(apply(x[-c(1:3)], 2, ENP),2)})
+        if(sum(is.na(tidy_data[, -3])) != 0){stop("The variable 'election','unit','votes' or 'seats' must not have NA values.", call. = FALSE)}
+        v1     <- unlist(lapply(split(tidy_data, tidy_data$unit), function(x){split(x, x$election)}), recursive = FALSE)
+        out    <- lapply(v1, function(x){round(apply(x[-c(1:3)], 2, ENP),2)})
         output <- cbind(do.call(rbind, lapply(v1,"[",1, 1:2)), do.call(rbind, out))
         output <- output[order(output$unit),]
         rownames(output) <- NULL
@@ -102,20 +97,20 @@ enp <- function(tidy_data,
                         tab <- plyr::ddply(output, ~ unit,
                                    function(x) c(min.election = min(x$election),
                                                  max.election = max(x$election),
-                                                 n.election = length(x$election),
-                                                 mean_enp = round(mean(x$enp), 2),
-                                                 sd_enp = round(stats::sd(x$enp), 2),
-                                                 mean_enp_c = round(mean(x$enp_c), 2),
-                                                 sd_enp_c = round(stats::sd(x$enp_c), 2)))
+                                                 n.election   = length(x$election),
+                                                 mean_enp     = round(mean(x$enp), 2),
+                                                 sd_enp       = round(stats::sd(x$enp), 2),
+                                                 mean_enp_c   = round(mean(x$enp_c), 2),
+                                                 sd_enp_c     = round(stats::sd(x$enp_c), 2)))
                         out_enp <- list(output, tab)
                         return(out_enp)
                 }else{
                         tab <- plyr::ddply(output, ~ unit,
                                    function(x) c(min.election = min(x$election),
                                                  max.election = max(x$election),
-                                                 n.election = length(x$election),
-                                                 mean_enp = round(mean(x$enp), 2),
-                                                 sd_enp = round(stats::sd(x$enp), 2)))
+                                                 n.election   = length(x$election),
+                                                 mean_enp     = round(mean(x$enp), 2),
+                                                 sd_enp       = round(stats::sd(x$enp), 2)))
                         out_enp <- list(output, tab)
                         return(out_enp)
                 }

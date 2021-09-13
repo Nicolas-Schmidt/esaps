@@ -68,24 +68,14 @@ evolat<-function(tidy_data,
                  scale = 100){
 
 
-        if(!is.data.frame(tidy_data)){
-                stop("'tidy_data' must be a 'data.frame'.")
-        }
+        if(!is.data.frame(tidy_data)){stop("'tidy_data' must be a 'data.frame'.", call. = FALSE)}
+        if (threshold < 0){stop("'threshold' cannot be negative.", call. = FALSE)}
+        if (digits < 0){stop("'digits' cannot be negative.", call. = FALSE)}
+        if(length(method) > 1){stop("you must select only one method.", call. = FALSE)}
 
-        if (threshold < 0){
-                stop("'threshold' cannot be negative.")
-        }
-        if (digits < 0){
-                stop("'digits' cannot be negative.")
-        }
-        if(length(method)>1){
-                stop("you must select only one method.")
-        }
         ch.met <- c("Pedersen", "Powell and Tucker", "Torcal and Lago")
         nu.met <- c(1, 2, 3)
-        if(!any(method == ch.met | method == nu.met)){
-                stop("the selected method does not exist.")
-        }
+        if(!any(method == ch.met | method == nu.met)){stop("the selected method does not exist.", call. = FALSE)}
 
         vars <- c("election", "unit", "M", "party", "votes")
         if(all(vars %in% names(tidy_data))){
@@ -107,9 +97,7 @@ evolat<-function(tidy_data,
                         }
         }
 
-        if(sum(is.na(tidy_data[,1:2])) != 0){
-                stop("The variable 'election','unit','votes' or 'M' must not have NA values.")
-        }
+        if(sum(is.na(tidy_data[,1:2])) != 0){stop("The variable 'election','unit','votes' or 'M' must not have NA values.", call. = FALSE)}
         if("M" %in% names(tidy_data)){
                 tidy_data$M <- tidy_data$M+1
         }
@@ -121,21 +109,6 @@ evolat<-function(tidy_data,
                 tidy_data[[i]][is.na(tidy_data[[i]])] <- 0L
         }
 
-        calculus <- function(dat){
-                volatA <- dat
-                for(i in 1:length(volatA)){
-                        for(j in 1:length(volatA[[i]])){
-                                for(k in 1:(ncol(volatA[[i]][[j]])-2)){
-                                        volatA[[i]][[j]][2,(k+2)] <- abs(volatA[[i]][[j]][1,(k+2)] - volatA[[i]][[j]][2,(k+2)])
-                                }
-                                volatA[[i]][[j]]$volat_A <- round((1/2)*sum(volatA[[i]][[j]][2,3:ncol(volatA[[i]][[j]])]),digits)
-                                volatA[[i]][[j]] <- volatA[[i]][[j]][2,c(1,2,ncol(volatA[[i]][[j]]))]
-                        }
-                        volatA[[i]]<-do.call(rbind, volatA[[i]])
-                }
-                volatA <- do.call(rbind, volatA)
-                return(volatA)
-        }
         if (method == "Powell and Tucker" || method == 2){
                 threshold <- threshold/scale
                 data1 <- tidy_data
@@ -143,13 +116,13 @@ evolat<-function(tidy_data,
                         data1 <- lapply(data1,"[",-3)
                 }
                 for(i in 1: length(data1)){
-                        data1[[i]]<-cbind(data1[[i]],party_ghostA=threshold-1,party_ghostB=threshold+1)
+                        data1[[i]] <- cbind(data1[[i]],party_ghostA=threshold-1,party_ghostB=threshold+1)
                 }
                 list_A <-list()
                 list_B <-list()
                 for(j in 1:length(data1)){
-                        list_A[[j]]<-list()
-                        list_B[[j]]<-list()
+                        list_A[[j]] <- list()
+                        list_B[[j]] <- list()
                         for(i in 1:(nrow(data1[[j]])-1)){
                                 list_A[[j]][[i]] <- list()
                                 list_B[[j]][[i]] <- list()
@@ -158,20 +131,20 @@ evolat<-function(tidy_data,
                                 list_B[[j]][[i]] <- data1[[j]][c(i,i+1),-(corte$col+2)]
                         }
                 }
-                volat_PTA <- calculus(list_A)
-                volat_PTB <- calculus(list_B)
-                volat_PT <- cbind.data.frame(volat_PTA, volat_B = volat_PTB[,3])
-                volat_PT <- volat_PT[order(volat_PT$unit),]
+                volat_PTA <- calculus(dat = list_A, digits = digits)
+                volat_PTB <- calculus(dat = list_B, digits = digits)
+                volat_PT  <- cbind.data.frame(volat_PTA, volat_B = volat_PTB[,3])
+                volat_PT  <- volat_PT[order(volat_PT$unit),]
                 rownames(volat_PT) <- NULL
-                if (summary==TRUE){
+                if (summary == TRUE){
                         tab <- plyr::ddply(volat_PT, ~ unit,
                                            function(x) c(first_elec = min(x$election),
-                                                         last_elec = max(x$election),
-                                                         election = length(x$unit),
-                                                         mean_A = round(mean(x$volat_A), digits),
-                                                         sd_A = round(stats::sd(x$volat_A), digits),
-                                                         mean_B = round(mean(x$volat_B), digits),
-                                                         sd_B = round(stats::sd(x$volat_B), digits)))
+                                                         last_elec  = max(x$election),
+                                                         election   = length(x$unit),
+                                                         mean_A     = round(mean(x$volat_A), digits),
+                                                         sd_A       = round(stats::sd(x$volat_A), digits),
+                                                         mean_B     = round(mean(x$volat_B), digits),
+                                                         sd_B       = round(stats::sd(x$volat_B), digits)))
                         out_PT <- list(volat_PT, tab)
                         return(out_PT)
                 }
@@ -197,22 +170,22 @@ evolat<-function(tidy_data,
                                 lista_EXO[[i]][[j]][, c(no_zero, 3)] <- 0L
                         }
                 }
-                lista_END <- calculus(lista_END)
-                lista_EXO <- calculus(lista_EXO)
+                lista_END <- calculus(dat = lista_END, digits = digits)
+                lista_EXO <- calculus(dat = lista_EXO, digits = digits)
                 colnames(lista_EXO)[3] <- "exogenous"
                 volat_TL <- cbind.data.frame(lista_EXO, endogenous = lista_END[,3])
                 volat_TL <- volat_TL[order(volat_TL$unit),]
                 rownames(volat_TL) <- NULL
 
-                if (summary==TRUE){
+                if (summary == TRUE){
                         tab2 <- plyr::ddply(volat_TL, ~ unit,
                                             function(x) c(first_elec = min(x$election),
-                                                          last_elec = max(x$election),
-                                                          election = length(x$unit),
-                                                          mean_end = round(mean(x$endogenous), digits),
-                                                          sd_end = round(stats::sd(x$endogenous), digits),
-                                                          mean_exo = round(mean(x$exogenous), digits),
-                                                          sd_exo = round(stats::sd(x$exogenous), digits)))
+                                                          last_elec  = max(x$election),
+                                                          election   = length(x$unit),
+                                                          mean_end   = round(mean(x$endogenous), digits),
+                                                          sd_end     = round(stats::sd(x$endogenous), digits),
+                                                          mean_exo   = round(mean(x$exogenous), digits),
+                                                          sd_exo     = round(stats::sd(x$exogenous), digits)))
                         out_TL <- list(volat_TL, tab2)
                         return(out_TL)
                 }
@@ -230,18 +203,18 @@ evolat<-function(tidy_data,
                                 lista_PED[[i]][[j]] <- data3[[i]][c(j,j+1),]
                         }
                 }
-                volat_PED <- calculus(lista_PED)
+                volat_PED <- calculus(dat = lista_PED, digits = digits)
                 colnames(volat_PED)[3] <- "eVolat"
                 volat_PED <- volat_PED[order(volat_PED$unit),]
                 rownames(volat_PED) <- NULL
 
-                if (summary==TRUE){
+                if (summary == TRUE){
                         tab3 <- plyr::ddply(volat_PED, ~ unit,
                                            function(x) c(first_elec = min(x$election),
-                                                         last_elec = max(x$election),
-                                                         election = length(x$unit),
+                                                         last_elec  = max(x$election),
+                                                         election   = length(x$unit),
                                                          mean_volat = round(mean(x$eVolat), digits),
-                                                         sd_volat = round(stats::sd(x$eVolat), digits)))
+                                                         sd_volat   = round(stats::sd(x$eVolat), digits)))
 
                         out_PED <- list(volat_PED, tab3)
                         return(out_PED)

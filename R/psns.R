@@ -62,48 +62,26 @@ psns <- function(tidy_data,
 
         tidy_data <- tidy_data[, names(tidy_data) %in% c('election','unit', 'party', 'votes', 'votes_nac')]
         tidy_data <- stats::na.omit(tidy_data)
-        if(!is.data.frame(tidy_data)){
-                stop("'tidy_data' must be a 'data.frame'.")
-        }
-
-        if(missing(method)){
-                stop("You must select only one method.")
-        }
-
-        if(sum(is.na(tidy_data[, 1:2])) != 0){
-                stop("The variable 'election'and 'unit' must not have NA values.")
-        }
-
-        if(length(method)>1){
-                stop("you must select only one method.")
-        }
+        if(!is.data.frame(tidy_data)){stop("'tidy_data' must be a 'data.frame'.", call. = FALSE)}
+        if(missing(method)){stop("You must select only one method.", call. = FALSE)}
+        if(sum(is.na(tidy_data[, 1:2])) != 0){stop("The variable 'election'and 'unit' must not have NA values.", call. = FALSE)}
+        if(length(method) > 1){stop("you must select only one method.", call. = FALSE)}
 
         ch.met <- c("Mainwaring and Jones", "Chibber and Kollman")
         nu.met <- c(1, 2)
-        if(!any(method == ch.met | method == nu.met)){
-                stop("the selected method does not exist.")
-        }
-
-        if(scale != 100 && scale != 1){
-                stop("The value of 'scale' is not correct.")
-        }
+        if(!any(method == ch.met | method == nu.met)){stop("the selected method does not exist.", call. = FALSE)}
+        if(scale != 100 && scale != 1){stop("The value of 'scale' is not correct.", call. = FALSE)}
         vscale <- unlist(lapply(split(tidy_data, tidy_data$election), function(x){split(x, x$unit)}), recursive = FALSE)
-        tidy_data <- lapply(vscale, function(x){cbind.data.frame(x, t.votes = (x$votes/sum(x$votes, na.rm=TRUE))*scale,
-                                                                             t.votes_nac = (x$votes_nac/sum(x$votes_nac, na.rm=TRUE))*scale )})
+        tidy_data <- lapply(vscale, function(x){cbind.data.frame(x,
+                                                                 t.votes     = (x$votes/sum(x$votes, na.rm=TRUE))*scale,
+                                                                 t.votes_nac = (x$votes_nac/sum(x$votes_nac, na.rm=TRUE))*scale )})
         tidy_data <- do.call(rbind, lapply(tidy_data, "[", -c(4:5)))
-        rownames(tidy_data)<-NULL
+        rownames(tidy_data) <- NULL
 
-        if(method=="Mainwaring and Jones" || method == 1){
-                gini_esaps <- function(v){
-                        v <- ifelse(is.na(v), 0, v)
-                        v <- v[order(v)]
-                        l <- length(v)
-                        g <- sum(v*1L:l)
-                        g <- 2 * g/sum(v) - (l + 1L)
-                        round(1-(g/l), 3)
-                }
-                v1 <- unlist(lapply(split(tidy_data, tidy_data$election), function(x){split(x, x$party)}), recursive = FALSE)
-                v2 <- lapply(v1, function(x){cbind(x, pns = apply(x[4], 2, gini_esaps))})
+        if(method == "Mainwaring and Jones" || method == 1){
+
+                v1   <- unlist(lapply(split(tidy_data, tidy_data$election), function(x){split(x, x$party)}), recursive = FALSE)
+                v2   <- lapply(v1, function(x){cbind(x, pns = apply(x[4], 2, gini_esaps))})
                 pns1 <- do.call(rbind, lapply(v2, function(x){x[1,-2]}))
                 psns <- lapply(split(pns1, pns1$election), function(x){cbind(x, psns = round(sum(x$t.votes_nac*x$pns),3))})
                 psns <- do.call(rbind,lapply(psns, "[", 1, c(1, 6)))
@@ -117,15 +95,14 @@ psns <- function(tidy_data,
                 return(psns)
         }
 
-        if(method=="Chibber and Kollman" || method == 2){
-                ENP  <- function(x){1/sum((x/sum(x, na.rm=TRUE))^2, na.rm=TRUE)}
+        if(method == "Chibber and Kollman" || method == 2){
                 nep_nac <- lapply(lapply(split(tidy_data, tidy_data$election),
-                                         function(x){x[duplicated(x$party)==FALSE, ]}),
+                                         function(x){x[duplicated(x$party) == FALSE, ]}),
                                                 function(x){ENP(x$t.votes_nac)})
                 nep_loc <- unlist(lapply(split(tidy_data, tidy_data$election), function(x){split(x, x$unit)}), recursive = FALSE)
                 nep_loc <- do.call(rbind,lapply(nep_loc, function(x){cbind(x, nepl = ENP(x$t.votes))}))
-                out <- lapply(split(nep_loc, nep_loc$election), function(x){mean(x[duplicated(x$unit)==FALSE, "nepl"])})
-                output <- data.frame(CH_K = round(unlist(nep_nac)-unlist(out),3))
+                out     <- lapply(split(nep_loc, nep_loc$election), function(x){mean(x[duplicated(x$unit) == FALSE, "nepl"])})
+                output  <- data.frame(CH_K = round(unlist(nep_nac)-unlist(out),3))
                 output
 
         }

@@ -99,15 +99,15 @@ convert_esaps<-function(path = NULL,
                         allSheet = FALSE){
 
         if (is.null(path) && is.null(dataset)){
-                stop("any of the arguments 'path' or 'dataset' must not be NULL.")
+                stop("any of the arguments 'path' or 'dataset' must not be NULL.", call. = FALSE)
         }
         if (!is.null(path)) {
                 extention <- c("xlsx", "ods")
                 extention <- extention[c(all(grepl("xlsx$", file.name)==TRUE), all(grepl("ods$", file.name)==TRUE))]
                 if (length(extention) != 1L){
-                        stop("It only accepts extension 'xlsx' or 'ods'.")
+                        stop("It only accepts extension 'xlsx' or 'ods'.", call. = FALSE)
                 }
-        if(length(file.name)!=length(nSheets)){
+        if(length(file.name) != length(nSheets)){
                 nSheets <- rep(nSheets[1], length(file.name))
         }
         old_setwd <- getwd()
@@ -147,26 +147,20 @@ convert_esaps<-function(path = NULL,
                 setwd(old_setwd)
         }
         if (!is.null(dataset)) {
-                if (is.matrix(dataset)) {
-                        stop("'dataset' must be a list or a data.frame")
-                }
-                if (is.list(dataset) && !is.data.frame(dataset)) {
-                        dat <- dataset
-                }
-                if (is.data.frame(dataset)) {
-                        dat <- list(dataset)
-                }
+                if (is.matrix(dataset)) {stop("'dataset' must be a list or a data.frame.", call. = FALSE)}
+                if (is.list(dataset) && !is.data.frame(dataset)) {dat <- dataset}
+                if (is.data.frame(dataset)) {dat <- list(dataset)}
         }
         if (0L %in% sapply(dat, nrow)) {
                 zero <- sapply(dat, nrow) %in% 0L
                 if(length(zero)==sum(zero)){
-                        stop("The datasets have 0 rows.")
+                        stop("The datasets have 0 rows.", call. = FALSE)
                 }else{
                         dat <- dat[!zero]
                 }
         }
-        if(sum(sapply(dat, function(x) c(unit.name, election.name) %in% names(x)))==0){
-                stop("'election.name' and 'unit.name' must be the same on all sheets.")
+        if(sum(sapply(dat, function(x) c(unit.name, election.name) %in% names(x))) == 0){
+                stop("'election.name' and 'unit.name' must be the same on all sheets.", call. = FALSE)
         }
         vector1 <- numeric()
         vector2 <- numeric()
@@ -187,9 +181,7 @@ convert_esaps<-function(path = NULL,
         }
         if (!is.null(M.name)) {
 
-                if(!all(sapply(out, function(x) M.name %in% names(x)))){
-                        stop("'M.name' must be the same on all sheets.")
-                }
+                if(!all(sapply(out, function(x) M.name %in% names(x)))){stop("'M.name' must be the same on all sheets.", call. = FALSE)}
                 m <- numeric()
                 data2 <- list()
                 for (i in 1:length(out)) {
@@ -200,9 +192,7 @@ convert_esaps<-function(path = NULL,
                 }
         }
         if (!is.null(votes_nac.name)) {
-                if(isTRUE(seats) || !is.null(M.name)){
-                        stop("if 'votes_nac.name' are different from NULL, 'M.name' or 'seats' must have the default values.")
-                }
+                if(isTRUE(seats) || !is.null(M.name)){stop("if 'votes_nac.name' are different from NULL, 'M.name' or 'seats' must have the default values.", call. = FALSE)}
                 out0<- lapply(out, function(x){tidyr::gather(x[which(x[,2]==votes_nac.name),-2], "party", "votes_nac", -"election")})
                 out <- lapply(out, function(x){tidyr::gather(x[-which(x[,2]==votes_nac.name),], "party", "votes", -"election", -"unit")})
                 output <- list()
@@ -211,32 +201,21 @@ convert_esaps<-function(path = NULL,
                 rownames(pull) <- NULL
                 return(pull)
         }
-        variables <- c(election.name, unit.name, M.name) ## acá no va votes_nac_name???
+        variables <- c(election.name, unit.name, M.name) ## aca no va votes_nac_name???
         var <- length(variables)
         if(var > 2){variables <- c("election", "unit", "M")}else{variables <- c("election", "unit")}
 
         if(isTRUE(seats)){
                 larS <- length(out)
                 c_seats <- as.logical((sapply(out, ncol)-var) %% 2)
-
-                if(length(which(c_seats==TRUE)) > 0){
-                        out <- out[-c(which(c_seats==TRUE))]
-                }
-                if(length(out)!=larS && length(out) != 0){
-                        warning("The database was deleted: ", paste(which(c_seats==TRUE), collapse = ", "), " ...must have the same number of columns of parties and seats")
-                }
-                if(length(out)==0L){
-                        stop("The structure of the data is not correct.")
-                }
+                if(length(which(c_seats==TRUE)) > 0){out <- out[-c(which(c_seats==TRUE))]}
+                if(length(out)!=larS && length(out) != 0){warning("The database was deleted: ", paste(which(c_seats==TRUE), collapse = ", "), " ...must have the same number of columns of parties and seats", call. = FALSE)}
+                if(length(out)==0L){stop("The structure of the data is not correct.", call. = FALSE)}
                 out3 <- lapply(out, function(x){x[,c(1:2,(((ncol(x)-var)/2)+(var+1)):ncol(x))]})
                 out4 <- lapply(out, function(x){x[,-c((((ncol(x)-var)/2) + (var+1)): ncol(x))]})
                 out3 <- lapply(out3, function(x){tidyr::gather(x, "party", "seats", -"election", -"unit")})
                 out4 <- lapply(out4, function(x){tidyr::gather(x, "party", "votes", -variables)})
-
-                for(i in 1:length(out4)){
-                        out4[[i]]<-cbind(out4[[i]], seats = out3[[i]]$seats)
-                }
-
+                for(i in 1:length(out4)){out4[[i]]<-cbind(out4[[i]], seats = out3[[i]]$seats)}
                 pull <- do.call(rbind, out4)
         }else{
                 out4 <- lapply(out, function(x){tidyr::gather(x, "party", "votes", -variables)})

@@ -44,7 +44,7 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 ### Functions
 
 | Indicator                    | Method                                                | Variables                                     | Function                    |
-| ---------------------------- | ----------------------------------------------------- | --------------------------------------------- | --------------------------- |
+|------------------------------|-------------------------------------------------------|-----------------------------------------------|-----------------------------|
 | Electoral Volatility         | [Pedersen (1979)](http://bit.ly/2p4cyZQ)              | `election` `unit` `party` `votes`             | `evolat(., method=1)`       |
 |                              | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)     | `election` `unit` `party` `votes`             | `evolat(., method=2)`       |
 |                              | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)       | `election` `unit` `party` `votes` `M`         | `evolat(., method=3)`       |
@@ -226,7 +226,6 @@ enp(votes)
 Electoral Disproportionality
 
 ``` r
-
 votes_2
 #>   year country votes_party1 votes_party2 votes_party3 votes_party4 seats_party1
 #> 1 2000     URY           20           30           40           10           25
