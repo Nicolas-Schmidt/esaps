@@ -3,15 +3,13 @@
 
 <!-- badges: start -->
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
+[![](https://img.shields.io/badge/devel%20version-0.2.2-blue.svg)](https://github.com/Nicolas-Schmidt/esaps)
 [![R build
 status](https://github.com/Nicolas-Schmidt/esaps/workflows/R-CMD-check/badge.svg)](https://github.com/Nicolas-Schmidt/esaps/actions)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![cran
-checks](https://cranchecks.info/badges/summary/esaps)](https://cran.r-project.org/web/checks/check_results_esaps.html)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
-[![](https://img.shields.io/badge/devel%20version-0.2.2-blue.svg)](https://github.com/Nicolas-Schmidt/esaps)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 
@@ -27,16 +25,11 @@ parties are included.
 
 ### Installation
 
-You can install the released version (`0.1.0`) of esaps from
-[CRAN](https://cran.r-project.org/) with:
-
 ``` r
+# Install speech from CRAN
 install.packages("esaps")
-```
 
-And the development version (`0.2.2`) from GitHub with:
-
-``` r
+# The development version from GitHub:
 if (!require("remotes")) install.packages("remotes")
 remotes::install_github("Nicolas-Schmidt/esaps")
 ```
@@ -287,6 +280,23 @@ psns(tidy_data = votes3, method = 1, pns = TRUE)
 #> 2 party_B     2000 0.864
 ```
 
+Electoral volatility in uruguay
+
+``` r
+library(Boreluy) # https://nicolas-schmidt.github.io/Boreluy/
+library(tidyverse)
+
+map_df(c(1984, 1989, 1994, 1999, 2004), nacional_uy) %>% 
+    as_esaps() %>% 
+    evolat("Pedersen") %>% 
+        ggplot(aes(x = election, y = eVolat)) +
+        geom_line(aes(group = 1)) + 
+        geom_point(size = 2, color = "red") +
+        theme_minimal()
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="80%" />
+
 Linear Model
 
 ``` r
@@ -313,8 +323,9 @@ lm(formula(dat[,4:3]), data = dat)
 #>     4.25394     -0.05731
 
 ggplot(dat, aes(x = enp, y = eVolat )) +
-        geom_point() + 
-        geom_smooth(method = lm, se = TRUE)
+    geom_point() + 
+    geom_smooth(method = lm, se = TRUE) +
+    theme_minimal()
 ```
 
 <img src="man/figures/README-f1-1.png" width="80%" />

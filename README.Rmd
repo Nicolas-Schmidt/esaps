@@ -17,12 +17,11 @@ knitr::opts_chunk$set(
 ## The `esaps` package <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="160" align="right"></a>
 
 <!-- badges: start -->
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
+`r badger::badge_devel("Nicolas-Schmidt/esaps", "blue")`
 [![R build status](https://github.com/Nicolas-Schmidt/esaps/workflows/R-CMD-check/badge.svg)](https://github.com/Nicolas-Schmidt/esaps/actions)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![cran checks](https://cranchecks.info/badges/summary/esaps)](https://cran.r-project.org/web/checks/check_results_esaps.html)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/esaps)](https://cran.r-project.org/package=esaps)
-`r badger::badge_devel("Nicolas-Schmidt/esaps", "blue")`
 [![CRAN RStudio mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/esaps?color=blue)](https://www.r-pkg.org/pkg/esaps)
 
 <!-- badges: end -->
@@ -33,18 +32,15 @@ It allows structuring electoral data of different size and structure to calculat
 
 ### Installation
 
-You can install the released version (`0.1.0`) of esaps from [CRAN](https://cran.r-project.org/) with:
-
 ```{r eval=FALSE}
+# Install speech from CRAN
 install.packages("esaps")
-```
 
-And the development version (`0.2.2`) from GitHub with:
-
-```{r eval=FALSE}
+# The development version from GitHub:
 if (!require("remotes")) install.packages("remotes")
 remotes::install_github("Nicolas-Schmidt/esaps")
 ```
+
 
 
 ### Functions
@@ -177,9 +173,25 @@ psns(tidy_data = votes3, method = 1, pns = TRUE)
 ```
 
 
+Electoral volatility in uruguay
+
+```{r, message=FALSE, fig.width = 6, fig.height = 3}
+library(Boreluy) # https://nicolas-schmidt.github.io/Boreluy/
+library(tidyverse)
+
+map_df(c(1984, 1989, 1994, 1999, 2004), nacional_uy) %>% 
+    as_esaps() %>% 
+    evolat("Pedersen") %>% 
+        ggplot(aes(x = election, y = eVolat)) +
+        geom_line(aes(group = 1)) + 
+        geom_point(size = 2, color = "red") +
+        theme_minimal()
+```
+
+
 
 Linear Model
-```{r f1, message = FALSE, fig.width = 6, fig.height = 4, warning=FALSE}
+```{r f1, message = FALSE, fig.width = 6, fig.height = 3, warning=FALSE}
 library(tidyverse)
 
 dat <- inner_join(evolat(votes, 1), enp(votes))
@@ -189,8 +201,9 @@ dat
 lm(formula(dat[,4:3]), data = dat)
 
 ggplot(dat, aes(x = enp, y = eVolat )) +
-        geom_point() + 
-        geom_smooth(method = lm, se = TRUE)
+    geom_point() + 
+    geom_smooth(method = lm, se = TRUE) +
+    theme_minimal()
 
 
 ```
