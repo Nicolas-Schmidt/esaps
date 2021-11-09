@@ -42,9 +42,9 @@ remotes::install_github("Nicolas-Schmidt/esaps")
 |                              | [Powell and Tucker (2014)](http://bit.ly/2FpoeBm)     | `election` `unit` `party` `votes`             | `evolat(., method=2)`       |
 |                              | [Torcal and Lago (2015)](http://bit.ly/2FD83zE)       | `election` `unit` `party` `votes` `M`         | `evolat(., method=3)`       |
 | Effective Number of Parties  | [Laakso and Taagepera (1979)](http://bit.ly/2oYU4dV)  | `election` `unit` `party` `votes` or `seats`  | `enp()`                     |
-| Party System Nationalization | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes` `votes_nac` | `psn(., method=1)`          |
-|                              | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY) | `election` `unit` `party` `votes` `votes_nac` | `psn(., method=2)`          |
-| Party Nationalization        | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes`             | `psn(., method=1, pn=TRUE)` |
+| Party System Nationalization | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes` `votes_nac` | `psns(., method=1)`         |
+|                              | [Chhibber and Kollman (2004)](https://bit.ly/2oj76SY) | `election` `unit` `party` `votes` `votes_nac` | `psns(., method=2)`         |
+| Party Nationalization        | [Mainwaring and Jones (2003)](https://bit.ly/2w9QgtO) | `election` `unit` `party` `votes`             | `psns(., method=1,pn=TRUE)` |
 | Electoral Disproportionality | Rae (1971)                                            | `election` `unit` `party` `votes` `seats`     | `dispro(., method=1)`       |
 |                              | [Loosemore and Hanby (1971)](https://bit.ly/2B1mIDH)  | `election` `unit` `party` `votes` `seats`     | `dispro(., method=2)`       |
 |                              | Lijphart\_1 (1986)                                    | `election` `unit` `party` `votes` `seats`     | `dispro(., method=3)`       |
@@ -280,7 +280,7 @@ psns(tidy_data = votes3, method = 1, pns = TRUE)
 #> 2 party_B     2000 0.864
 ```
 
-Electoral volatility in uruguay
+Electoral volatility in Uruguay
 
 ``` r
 library(Boreluy) # https://nicolas-schmidt.github.io/Boreluy/
