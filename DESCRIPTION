@@ -18,6 +18,6 @@ Imports:
     dplyr,
     tidyr,
     plyr (>= 1.8.4),
-    readODS (>= 1.6.4),
+    readODS (>= 1.7.0),
     readxl (>= 1.0.0)
 RoxygenNote: 7.1.1
