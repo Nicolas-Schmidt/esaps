@@ -116,7 +116,7 @@ convert_esaps<-function(path = NULL,
                 if(isTRUE(allSheet)){
                         nSheets <- vector("numeric", length = length(file.name))
                         for(i in 1:length(file.name)){
-                                nSheets[i] <- length(readODS::ods_sheets(file.name[i]))
+                                nSheets[i] <- length(readODS::list_ods_sheets(file.name[i]))
                         }
                 }
                 dat <- list()
